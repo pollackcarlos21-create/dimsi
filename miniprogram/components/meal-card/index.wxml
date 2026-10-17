@@ -2,19 +2,23 @@
   wx:if="{{view}}"
   class="meal-card"
   hover-class="meal-card--pressed"
+  hover-stay-time="60"
   bindtap="onSelect"
   aria-role="button"
   aria-label="{{view.typeLabel}} {{view.name}}，查看详情"
 >
   <view class="meal-card__top">
-    <view class="meal-card__type">{{view.typeLabel}} · {{view.time}}</view>
+    <text class="meal-card__meta">{{view.typeLabel}} · {{view.time}}</text>
     <demo-badge source="{{view.source}}" />
   </view>
   <view class="meal-card__name">{{view.name}}</view>
-  <view class="meal-card__meta">
-    <text class="meal-card__metric"><text class="meal-card__number">{{view.calories}}</text> 千卡</text>
-    <text class="meal-card__dot">·</text>
-    <text class="meal-card__metric">蛋白质 {{view.protein}} 克</text>
-    <view class="meal-card__arrow">›</view>
+  <view class="meal-card__bottom">
+    <view class="meal-card__numbers">
+      <text class="meal-card__value">{{view.calories}}</text>
+      <text class="meal-card__unit">千卡</text>
+      <text class="meal-card__dot">·</text>
+      <text class="meal-card__protein">蛋白质 {{view.protein}} 克</text>
+    </view>
+    <text class="meal-card__arrow">›</text>
   </view>
 </view>

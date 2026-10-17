@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "问知食",
+  "navigationBarTitleText": "助手",
   "disableScroll": true,
   "usingComponents": {
     "chat-bubble": "/components/chat-bubble/index"

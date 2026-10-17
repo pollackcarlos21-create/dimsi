@@ -1,53 +1,40 @@
 .row {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 14rpx;
   margin-bottom: 28rpx;
+  animation: bubble-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .row--user {
-  justify-content: flex-end;
-}
-
-.avatar {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  width: 58rpx;
-  height: 58rpx;
-  margin-top: 4rpx;
-  border-radius: 50%;
-  background: #e7eee9;
-  color: #436450;
-  font-size: 25rpx;
-  font-weight: 600;
-}
-
-.bubble-wrap {
-  max-width: 78%;
-}
-
-.row--user .bubble-wrap {
-  display: flex;
-  flex-direction: column;
   align-items: flex-end;
 }
 
 .bubble {
-  padding: 22rpx 26rpx;
-  border: 1rpx solid #e8e4dc;
-  border-radius: 8rpx 26rpx 26rpx 26rpx;
-  background: #fffefc;
-  color: #38352f;
+  max-width: 82%;
+  padding: 24rpx 28rpx;
+  border-radius: 36rpx;
+  background: #f6f6f6;
+  color: #202124;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   font-size: 29rpx;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .bubble--user {
-  border-color: #547a65;
-  border-radius: 26rpx 8rpx 26rpx 26rpx;
-  background: #547a65;
+  background: #202124;
   color: #ffffff;
 }
 
@@ -56,21 +43,9 @@
   word-break: break-word;
 }
 
-.bubble__foot {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  margin-top: 8rpx;
-  padding: 0 6rpx;
-}
-
-.time {
-  color: #aaa49a;
-  font-size: 20rpx;
-}
-
 .demo-tag {
-  color: #8b5c32;
-  font-size: 20rpx;
-  font-weight: 600;
+  margin: 8rpx 10rpx 0;
+  color: #b0b0b0;
+  font-size: 22rpx;
+  font-weight: 500;
 }

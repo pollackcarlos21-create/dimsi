@@ -9,16 +9,16 @@
     "pages/correction/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#F8F7F4",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "知食",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#F8F7F4",
+    "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "color": "#8B877E",
-    "selectedColor": "#547A65",
-    "backgroundColor": "#FBFAF7",
+    "color": "#B0B0B0",
+    "selectedColor": "#202124",
+    "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
     "list": [
       {

@@ -11,9 +11,5 @@ Component({
       type: String,
       value: '',
     },
-    warm: {
-      type: Boolean,
-      value: false,
-    },
   },
 });

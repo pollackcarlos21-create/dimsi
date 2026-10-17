@@ -1,171 +1,115 @@
-<!-- 加载 -->
 <view wx:if="{{state === 'loading'}}" class="page state-page">
-  <view wx:if="{{isDemoMode}}" class="demo-banner">
-    <view class="demo-banner__dot"></view>
-    <text>本地演示模式：不会调用真实 AI，也不会使用相机画面做识别。</text>
-  </view>
-  <view class="loader-scene">
-    <view class="loader-ring">
-      <view class="loader-ring__inner"></view>
-      <view class="loader-dot loader-dot--one"></view>
-      <view class="loader-dot loader-dot--two"></view>
-      <view class="loader-dot loader-dot--three"></view>
-    </view>
-    <view class="loader-title">{{stageText}}</view>
-    <view class="loader-hint">{{stageHint}}</view>
-    <view class="loading-dots loader-dots">
+  <view wx:if="{{isDemoMode}}" class="demo-banner">演示模式 · 不会调用真实分析</view>
+  <view class="state-center">
+    <view class="loading-dots">
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
     </view>
+    <view class="state-title">{{stageText}}</view>
   </view>
-  <view class="loader-foot">
-    <view class="loader-foot__lock"></view>
-    <text>照片仅用于本次分析，完成后删除。</text>
-  </view>
+  <view class="state-privacy">照片仅用于当次分析，完成后删除。</view>
 </view>
 
-<!-- 失败 -->
 <view wx:elif="{{state === 'error'}}" class="page state-page">
-  <view class="error-scene">
-    <view class="error-orb">
-      <view class="error-orb__line"></view>
-      <view class="error-orb__dot"></view>
-    </view>
-    <view class="error-title">{{errorTitle}}</view>
-    <view class="error-message">{{errorMessage}}</view>
-    <view class="error-help">如果反复失败，可以换一张光线更充足、食物更完整的照片。</view>
-    <view class="error-actions">
+  <view class="state-center">
+    <view class="state-title">{{errorTitle}}</view>
+    <view class="state-message">{{errorMessage}}</view>
+    <view class="state-help">换一张光线更好的照片，通常会更准。</view>
+    <view class="state-actions">
       <button wx:if="{{errorCanRetry}}" class="btn btn-primary" bindtap="onRetry">再试一次</button>
-      <button wx:if="{{errorCanCamera}}" class="btn btn-secondary" bindtap="onRetake">重新拍一张</button>
-      <button class="back-link" bindtap="onBackToday">先回到今天</button>
+      <button wx:if="{{errorCanCamera}}" class="btn btn-secondary" bindtap="onRetake">换一张照片</button>
+      <button class="btn btn-ghost" bindtap="onBackToday">返回</button>
     </view>
   </view>
 </view>
 
-<!-- 结果 -->
 <view wx:else class="page result-page">
   <view wx:if="{{isDemoMode || meal.source === 'mock'}}" class="demo-banner">
-    <view class="demo-banner__dot"></view>
-    <text wx:if="{{isDemoMode}}">本地演示模式：这份结果是固定示例，不是对照片的真实识别。</text>
-    <text wx:else>服务端当前处于演示模式：这份结果不是对这张照片的真实识别。</text>
+    演示数据 · 不代表真实分析
   </view>
 
   <view class="result-head">
-    <view class="result-meta">{{meta.dateLabel}} · {{meta.timeLabel}} · {{meta.typeLabel}}</view>
+    <view class="result-meta">{{meta.dateLabel}} · {{meta.typeLabel}} · {{meta.timeLabel}}</view>
     <view class="result-title">{{meal.mealName}}</view>
-    <view class="result-badges">
-      <demo-badge source="{{meal.source}}" show-ai-label="{{true}}" />
-      <text class="confidence">估算把握：{{meta.confidence}}</text>
+    <view class="result-subline">
+      <demo-badge source="{{meal.source}}" />
+      <text class="result-confidence">{{meta.confidence}}</text>
     </view>
   </view>
 
-  <view class="assessment">
-    <view class="assessment__label">这顿饭</view>
-    <view class="assessment__text">{{meal.assessment}}</view>
-  </view>
+  <view class="result-summary">{{meal.assessment}}</view>
 
-  <view class="nutrition-card">
-    <view class="nutrition-card__head">
-      <text class="nutrition-card__title">营养估算</text>
-      <text class="nutrition-card__tag">整餐范围</text>
+  <view class="metrics">
+    <view class="metric">
+      <view class="metric__label">热量</view>
+      <view class="metric__value">{{meta.calories}}</view>
+      <view class="metric__unit">千卡</view>
     </view>
-    <view class="nutrition-grid">
-      <view class="nutrition-cell">
-        <view class="nutrition-cell__label">热量</view>
-        <view class="nutrition-cell__value">{{meta.calories}}</view>
-        <view class="nutrition-cell__unit">千卡</view>
-      </view>
-      <view class="nutrition-cell nutrition-cell--center">
-        <view class="nutrition-cell__label">蛋白质</view>
-        <view class="nutrition-cell__value">{{meta.protein}}</view>
-        <view class="nutrition-cell__unit">克</view>
-      </view>
-      <view class="nutrition-cell">
-        <view class="nutrition-cell__label">脂肪</view>
-        <view class="nutrition-cell__value">{{meta.fat}}</view>
-        <view class="nutrition-cell__unit">克</view>
-      </view>
+    <view class="metric metric--center">
+      <view class="metric__label">蛋白质</view>
+      <view class="metric__value">{{meta.protein}}</view>
+      <view class="metric__unit">克</view>
     </view>
-    <view class="nutrition-card__foot">
-      这是份量与做法带来的估算区间，不是实验室测量结果。
+    <view class="metric metric--right">
+      <view class="metric__label">脂肪</view>
+      <view class="metric__value">{{meta.fat}}</view>
+      <view class="metric__unit">克</view>
     </view>
   </view>
-
-  <view wx:if="{{cautions.length > 0}}" class="caution-card">
-    <view class="caution-card__title">油盐提示</view>
-    <view wx:for="{{cautions}}" wx:key="key" class="caution-row">
-      <view class="caution-dot caution-dot--{{item.level}}"></view>
-      <view class="caution-row__body">
-        <view class="caution-row__name">{{item.title}}</view>
-        <view class="caution-row__text">{{item.message}}</view>
-      </view>
-    </view>
-    <view class="caution-card__note">照片无法测量实际油量和盐含量。</view>
-  </view>
-
-  <view class="foods-card">
-    <view class="foods-card__head">
-      <view>
-        <view class="foods-card__title">我看到了什么</view>
-        <view class="foods-card__sub">共 {{foods.length}} 项，份量为可食部估算</view>
-      </view>
-      <button class="text-button" bindtap="onEdit">调整</button>
-    </view>
-    <view wx:for="{{foods}}" wx:key="id" class="food-row">
-      <view class="food-row__index">{{item.index}}</view>
-      <view class="food-row__body">
-        <view class="food-row__line">
-          <text class="food-row__name">{{item.name}}</text>
-          <text class="food-row__category">{{item.categoryLabel}}</text>
-        </view>
-        <view class="food-row__portion">{{item.portionText}} · {{item.confidenceText}}</view>
-        <view wx:if="{{item.matchedText}}" class="food-row__matched">{{item.matchedText}}</view>
-        <view wx:if="{{item.note}}" class="food-row__note">{{item.note}}</view>
-      </view>
-    </view>
-    <view class="foods-card__hint">识别或份量不准？点右上角“调整”，我们会重新估算。</view>
-  </view>
+  <view class="metric-note">估算区间，非精确测量。</view>
 
   <view class="voice-section">
-    <view class="section-heading">
-      <text class="section-heading__title">听一听这餐建议</text>
-      <text class="section-heading__hint">不想看字时，可以直接听</text>
-    </view>
     <voice-player meal-id="{{meal.id}}" revision="{{voiceRevision}}" />
   </view>
 
-  <section-card title="下一顿怎么搭" subtitle="不用一顿就做到完美，下一餐稍微调整就很好">
-    <view class="next-meal">{{meal.nextMeal}}</view>
-    <view class="suggestion-list">
-      <view wx:for="{{meal.suggestions}}" wx:key="*this" class="suggestion">
-        <view class="suggestion__dot"></view>
-        <text class="suggestion__text">{{item}}</text>
-      </view>
-    </view>
-    <view class="activity">
-      <view class="activity__icon">
-        <view class="activity__head"></view>
-        <view class="activity__body"></view>
-      </view>
-      <text class="activity__text">{{meal.activitySuggestion}}</text>
-    </view>
-  </section-card>
+  <view wx:if="{{cautions.length > 0}}" class="caution-section">
+    <view class="section-label">油盐</view>
+    <view wx:for="{{cautions}}" wx:key="key" class="caution-line">{{item.message}}</view>
+  </view>
 
-  <view class="details-card">
-    <button class="details-toggle" bindtap="onToggleDetails">
-      <view>
-        <view class="details-toggle__title">这些数字怎么来的？</view>
-        <view class="details-toggle__sub">查看估算说明与局限</view>
+  <view class="next-section">
+    <section-card title="下一餐">
+      <view class="next-body">{{meal.nextMeal}}</view>
+      <view class="suggestion-list">
+        <view wx:for="{{meal.suggestions}}" wx:key="*this" class="suggestion">
+          <view class="suggestion__dot"></view>
+          <text class="suggestion__text">{{item}}</text>
+        </view>
       </view>
-      <text class="details-toggle__action">{{showDetails ? '收起' : '展开'}}</text>
+      <view class="activity-note">{{meal.activitySuggestion}}</view>
+    </section-card>
+  </view>
+
+  <view class="disclosure">
+    <button class="disclosure-row" bindtap="onToggleFoods">
+      <view class="disclosure-title">
+        <text>识别明细</text>
+        <text class="disclosure-count">{{foods.length}}</text>
+      </view>
+      <text class="disclosure-action">{{showFoods ? '收起' : '展开'}}</text>
     </button>
-    <view wx:if="{{showDetails}}" class="details-body">
-      <view class="method">{{methodText}}</view>
-      <view wx:for="{{warnings}}" wx:key="*this" class="warning-row">
-        <view class="warning-row__dot"></view>
-        <text>{{item}}</text>
+    <view wx:if="{{showFoods}}" class="disclosure-body">
+      <view wx:for="{{foods}}" wx:key="id" class="food-row">
+        <view class="food-row__main">
+          <text class="food-row__name">{{item.name}}</text>
+          <text class="food-row__category">{{item.categoryLabel}}</text>
+        </view>
+        <view class="food-row__meta">{{item.portionText}}</view>
+        <view wx:if="{{item.matchedText}}" class="food-row__note">{{item.matchedText}}</view>
+        <view wx:if="{{item.note}}" class="food-row__note">{{item.note}}</view>
       </view>
+    </view>
+  </view>
+
+  <view class="disclosure">
+    <button class="disclosure-row" bindtap="onToggleDetails">
+      <text class="disclosure-title">说明</text>
+      <text class="disclosure-action">{{showDetails ? '收起' : '展开'}}</text>
+    </button>
+    <view wx:if="{{showDetails}}" class="disclosure-body">
+      <view class="method-text">{{methodText}}</view>
+      <view wx:for="{{warnings}}" wx:key="*this" class="warning-line">{{item}}</view>
       <view wx:if="{{meta.timingText}}" class="timing">{{meta.timingText}}</view>
     </view>
   </view>
@@ -173,8 +117,8 @@
   <view class="disclaimer">{{meal.disclaimer}}</view>
 
   <view class="result-actions">
-    <button class="btn btn-secondary" bindtap="onEdit">调整食物或份量</button>
-    <button class="btn btn-primary" bindtap="onBackToday">回到今天</button>
-    <button class="delete-link" bindtap="onDelete">删除这条记录</button>
+    <button class="btn btn-primary" bindtap="onEdit">调整食物</button>
+    <button class="btn btn-secondary" bindtap="onBackToday">回到今天</button>
+    <button class="delete-link" bindtap="onDelete">删除记录</button>
   </view>
 </view>

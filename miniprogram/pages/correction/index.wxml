@@ -1,36 +1,32 @@
 <view class="page correction-page">
-  <view wx:if="{{state === 'loading'}}" class="loading-block">
+  <view wx:if="{{state === 'loading'}}" class="correction-state">
     <view class="loading-dots">
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
     </view>
-    <text>正在取回这一餐……</text>
+    <text>正在加载…</text>
   </view>
 
-  <view wx:elif="{{state === 'error'}}" class="error-block">
-    <view class="error-block__title">暂时无法调整</view>
-    <view class="error-block__text">{{error}}</view>
-    <button class="btn btn-secondary btn-small" bindtap="onRetry">再试一次</button>
-    <button class="back-link" bindtap="onCancel">返回</button>
+  <view wx:elif="{{state === 'error'}}" class="correction-state correction-state--error">
+    <view class="correction-state__title">无法调整</view>
+    <view class="correction-state__text">{{error}}</view>
+    <button class="btn btn-secondary btn-small" bindtap="onRetry">重试</button>
+    <button class="correction-cancel" bindtap="onCancel">返回</button>
   </view>
 
   <block wx:else>
     <view class="correction-head">
       <view class="correction-head__top">
-        <view class="eyebrow">调整 {{mealName}}</view>
+        <view class="correction-title">修改食物</view>
         <demo-badge source="{{source}}" />
       </view>
-      <view class="correction-title">哪里不太对？</view>
-      <view class="correction-sub">
-        可以修改食物名称或份量，也可以删掉没吃的东西。保存后会重新计算营养范围，不会再次识别照片。
-      </view>
+      <view class="correction-sub">改名称或份量，保存后重新估算。</view>
     </view>
 
     <view class="food-list">
       <view wx:for="{{foods}}" wx:key="key" class="food-edit">
-        <view class="food-edit__head">
-          <view class="food-edit__index">{{index + 1}}</view>
+        <view class="food-edit__top">
           <input
             class="food-name"
             value="{{item.name}}"
@@ -49,9 +45,9 @@
         </view>
 
         <view class="portion-row">
-          <text class="portion-label">大约吃了</text>
+          <text class="portion-label">份量</text>
           <button class="stepper" data-index="{{index}}" data-delta="-10" catchtap="onAdjustPortion">−</button>
-          <view class="portion-input-wrap">
+          <view class="portion-field">
             <input
               class="portion-input"
               type="number"
@@ -69,18 +65,16 @@
 
     <button wx:if="{{foods.length < 12}}" class="add-food" bindtap="onAddFood">
       <text class="add-food__plus">＋</text>
-      <text>添加一项刚才没识别到的食物</text>
+      <text>添加食物</text>
     </button>
 
-    <view class="save-note">
-      份量按可食部填写。拿不准时填一个大概值就好，营养结果本身会给出区间。
-    </view>
+    <view class="save-note">份量按可食部估算。</view>
 
     <view class="correction-actions">
       <button class="btn btn-primary" bindtap="onSave" disabled="{{busy}}">
-        {{busy ? '正在重新估算…' : '保存并重新估算'}}
+        {{busy ? '保存中…' : '保存'}}
       </button>
-      <button class="cancel-link" bindtap="onCancel">取消</button>
+      <button class="correction-cancel" bindtap="onCancel">取消</button>
     </view>
   </block>
 </view>

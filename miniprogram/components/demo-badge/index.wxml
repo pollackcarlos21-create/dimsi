@@ -1,1 +1,1 @@
-<view wx:if="{{display}}" class="badge {{demo ? 'badge--demo' : ''}}">{{display}}</view>
+<view wx:if="{{display}}" class="badge">{{display}}</view>

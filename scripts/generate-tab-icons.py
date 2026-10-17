@@ -6,8 +6,8 @@ from PIL import Image, ImageDraw
 
 SIZE = 324
 OUT = Path(__file__).resolve().parents[1] / "miniprogram" / "assets" / "tabbar"
-INACTIVE = (139, 135, 126, 255)
-ACTIVE = (84, 122, 101, 255)
+INACTIVE = (176, 176, 176, 255)
+ACTIVE = (32, 33, 36, 255)
 STROKE = 18
 
 
@@ -54,7 +54,7 @@ def settings(color):
         draw.line([(48, y), (276, y)], fill=color, width=STROKE)
         draw.ellipse(
             [(knob_x - 28, y - 28), (knob_x + 28, y + 28)],
-            fill=(248, 247, 244, 255),
+            fill=(255, 255, 255, 255),
             outline=color,
             width=STROKE,
         )

@@ -10,23 +10,12 @@ const PRESETS = [
   '我应该怎么运动？',
 ];
 
-function welcomeMessage(): ChatMessage {
-  return {
-    id: 'welcome',
-    role: 'assistant',
-    text:
-      '你好，我是知食。可以问我下一餐怎么搭、蛋白质够不够，或者这顿饭是不是偏油。我会尽量说人话，也会说明哪些只是估算。',
-    createdAt: new Date().toISOString(),
-  };
-}
-
 interface ChatData {
   isDemo: boolean;
   hasMock: boolean;
   loading: boolean;
   error: string;
   messages: ChatMessage[];
-  welcome: ChatMessage;
   input: string;
   sending: boolean;
   conversationId: string;
@@ -46,7 +35,6 @@ Page({
     loading: true,
     error: '',
     messages: [],
-    welcome: welcomeMessage(),
     input: '',
     sending: false,
     conversationId: '',

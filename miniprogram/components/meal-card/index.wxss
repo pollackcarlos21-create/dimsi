@@ -1,14 +1,17 @@
 .meal-card {
   margin-bottom: 20rpx;
-  padding: 28rpx 28rpx 26rpx;
-  border: 1rpx solid #e8e4dc;
-  border-radius: 28rpx;
-  background: #fffefc;
-  box-shadow: 0 10rpx 30rpx rgba(73, 66, 52, 0.045);
+  padding: 30rpx 32rpx;
+  border-radius: 48rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.035),
+    0 16rpx 64rpx rgba(0, 0, 0, 0.02);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .meal-card--pressed {
-  opacity: 0.86;
+  transform: scale(0.988);
 }
 
 .meal-card__top {
@@ -18,44 +21,63 @@
   gap: 16rpx;
 }
 
-.meal-card__type {
-  color: #837f76;
+.meal-card__meta {
+  color: #8a8a8a;
   font-size: 23rpx;
   font-weight: 500;
-  letter-spacing: 1rpx;
 }
 
 .meal-card__name {
   margin-top: 12rpx;
-  color: #242424;
+  color: #202124;
   font-size: 34rpx;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
-.meal-card__meta {
+.meal-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.meal-card__numbers {
   display: flex;
   align-items: baseline;
-  margin-top: 14rpx;
-  color: #77736a;
-  font-size: 25rpx;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 
-.meal-card__number {
-  color: #436450;
-  font-size: 30rpx;
+.meal-card__value {
+  color: #202124;
+  font-size: 38rpx;
   font-weight: 600;
+  letter-spacing: -1rpx;
+}
+
+.meal-card__unit {
+  margin-left: 6rpx;
+  color: #b0b0b0;
+  font-size: 22rpx;
 }
 
 .meal-card__dot {
   margin: 0 12rpx;
-  color: #b7b1a7;
+  color: #d0d0d0;
+  font-size: 22rpx;
+}
+
+.meal-card__protein {
+  color: #8a8a8a;
+  font-size: 24rpx;
 }
 
 .meal-card__arrow {
-  margin-left: auto;
-  color: #aaa49a;
-  font-size: 38rpx;
+  flex: 0 0 auto;
+  color: #b0b0b0;
+  font-size: 36rpx;
   font-weight: 300;
   line-height: 1;
 }

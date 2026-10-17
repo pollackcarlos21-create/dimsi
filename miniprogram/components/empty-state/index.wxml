@@ -1,9 +1,4 @@
 <view class="empty">
-  <view class="empty__art" aria-hidden="true">
-    <view class="empty__bowl"></view>
-    <view class="empty__leaf empty__leaf--one"></view>
-    <view class="empty__leaf empty__leaf--two"></view>
-  </view>
   <view class="empty__title">{{title}}</view>
   <view wx:if="{{description}}" class="empty__desc">{{description}}</view>
   <button wx:if="{{actionText}}" class="empty__action" bindtap="onAction">{{actionText}}</button>

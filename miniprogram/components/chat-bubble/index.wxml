@@ -1,12 +1,6 @@
 <view wx:if="{{view}}" class="row {{view.isUser ? 'row--user' : ''}}">
-  <view wx:if="{{!view.isUser}}" class="avatar">知</view>
-  <view class="bubble-wrap">
-    <view class="bubble {{view.isUser ? 'bubble--user' : ''}}">
-      <text class="bubble__text" user-select>{{view.text}}</text>
-    </view>
-    <view class="bubble__foot">
-      <text wx:if="{{view.demo}}" class="demo-tag">演示回复</text>
-      <text class="time">{{view.time}}</text>
-    </view>
+  <view class="bubble {{view.isUser ? 'bubble--user' : ''}}">
+    <text class="bubble__text" user-select>{{view.text}}</text>
   </view>
+  <view wx:if="{{view.demo}}" class="demo-tag">演示回复</view>
 </view>

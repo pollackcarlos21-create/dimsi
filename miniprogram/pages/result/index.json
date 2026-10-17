@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "这顿饭",
+  "navigationBarTitleText": "分析",
   "usingComponents": {
     "demo-badge": "/components/demo-badge/index",
     "voice-player": "/components/voice-player/index",

@@ -1,39 +1,31 @@
 <view class="chat-page">
-  <view class="chat-head">
-    <view class="chat-head__eyebrow">一般营养信息 · 不替代医疗建议</view>
-    <view class="chat-head__title">问知食</view>
-    <view class="chat-head__sub">下一餐怎么搭，或者这顿饭哪里可以更好，都可以慢慢问。</view>
+  <view wx:if="{{isDemo || hasMock}}" class="chat-top-note">
+    演示回复 · 不代表真实 AI
   </view>
 
-  <view wx:if="{{isDemo || hasMock}}" class="demo-banner">
-    <view class="demo-banner__dot"></view>
-    <text wx:if="{{isDemo}}">本地演示模式：回复来自固定示例，不是真实 AI 对话。</text>
-    <text wx:else>服务端当前为演示模式：部分或全部回复来自固定示例，不是真实 AI 输出。</text>
-  </view>
-
-  <view wx:if="{{profileLoaded && !allowHistory && !isDemo}}" class="consent-banner">
-    <view class="consent-banner__copy">
-      <view class="consent-banner__title">要参考最近的饮食记录吗？</view>
-      <view class="consent-banner__text">开启后会参考最近三天的餐次摘要，不会用到照片。</view>
-    </view>
-    <button class="consent-banner__action" bindtap="onAllowHistory" disabled="{{consentBusy}}">
-      {{consentBusy ? '开启中…' : '允许'}}
+  <view
+    wx:if="{{profileLoaded && !allowHistory && !isDemo}}"
+    class="consent-line"
+  >
+    <text class="consent-line__text">参考最近饮食？</text>
+    <button class="consent-line__action" bindtap="onAllowHistory" disabled="{{consentBusy}}">
+      {{consentBusy ? '开启中' : '允许'}}
     </button>
   </view>
 
-  <view wx:if="{{loading}}" class="chat-loading">
+  <view wx:if="{{loading}}" class="chat-state">
     <view class="loading-dots">
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
       <view class="loading-dots__dot"></view>
     </view>
-    <text>正在准备对话……</text>
+    <text class="chat-state__text">正在加载…</text>
   </view>
 
-  <view wx:elif="{{error}}" class="chat-error">
-    <view class="chat-error__title">暂时没有连上助手</view>
-    <view class="chat-error__text">{{error}}</view>
-    <button class="btn btn-secondary btn-small" bindtap="onRetry">再试一次</button>
+  <view wx:elif="{{error}}" class="chat-state">
+    <view class="chat-state__title">连接失败</view>
+    <view class="chat-state__text">{{error}}</view>
+    <button class="btn btn-secondary btn-small chat-state__retry" bindtap="onRetry">重试</button>
   </view>
 
   <scroll-view
@@ -46,17 +38,33 @@
     show-scrollbar="{{false}}"
   >
     <view class="chat-messages">
-      <chat-bubble wx:if="{{messages.length === 0}}" message="{{welcome}}" />
+      <view wx:if="{{messages.length === 0}}" class="chat-empty">
+        <view class="chat-empty__title">今天想聊点什么？</view>
+        <view class="quick-list">
+          <button
+            wx:for="{{presets}}"
+            wx:key="*this"
+            class="quick-item"
+            hover-class="quick-item--pressed"
+            data-question="{{item}}"
+            bindtap="onPresetTap"
+            disabled="{{sending || !loaded}}"
+          >
+            <text>{{item}}</text>
+            <text class="quick-item__arrow">›</text>
+          </button>
+        </view>
+      </view>
+
       <chat-bubble wx:for="{{messages}}" wx:key="id" message="{{item}}" />
+
       <view wx:if="{{sending}}" class="typing">
-        <view class="typing__avatar">知</view>
         <view class="typing__bubble">
           <view class="loading-dots">
             <view class="loading-dots__dot"></view>
             <view class="loading-dots__dot"></view>
             <view class="loading-dots__dot"></view>
           </view>
-          <text class="typing__text">正在想一想</text>
         </view>
       </view>
       <view id="chat-bottom" class="chat-bottom"></view>
@@ -64,27 +72,13 @@
   </scroll-view>
 
   <view class="composer">
-    <scroll-view class="presets" scroll-x enable-flex show-scrollbar="{{false}}">
-      <view class="presets__inner">
-        <button
-          wx:for="{{presets}}"
-          wx:key="*this"
-          class="preset"
-          data-question="{{item}}"
-          bindtap="onPresetTap"
-          disabled="{{sending || !loaded}}"
-        >
-          {{item}}
-        </button>
-      </view>
-    </scroll-view>
     <view class="composer__box">
       <textarea
         class="composer__input"
         value="{{input}}"
         maxlength="500"
         auto-height
-        placeholder="问问这一餐，或者下一餐……"
+        placeholder="问点什么…"
         placeholder-class="placeholder"
         bindinput="onInput"
         confirm-type="send"
@@ -103,6 +97,6 @@
         <view class="send-arrow"></view>
       </button>
     </view>
-    <view class="composer__foot">助手可能出错，重要健康问题请咨询医生或注册营养师。</view>
+    <view class="composer__foot">一般饮食信息，不替代医疗建议</view>
   </view>
 </view>

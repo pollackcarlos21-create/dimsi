@@ -1,6 +1,6 @@
-<view class="section-card {{warm ? 'section-card--warm' : ''}}">
+<view class="section-card">
   <view wx:if="{{title || subtitle}}" class="section-card__head">
-    <view>
+    <view class="section-card__heading">
       <view wx:if="{{title}}" class="section-card__title">{{title}}</view>
       <view wx:if="{{subtitle}}" class="section-card__subtitle">{{subtitle}}</view>
     </view>

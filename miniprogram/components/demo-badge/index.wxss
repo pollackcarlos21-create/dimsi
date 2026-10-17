@@ -2,18 +2,14 @@
   display: inline-flex;
   align-items: center;
   min-height: 42rpx;
-  padding: 0 16rpx;
+  padding: 0 14rpx;
   border-radius: 999rpx;
-  background: #e7eee9;
-  color: #436450;
-  font-size: 21rpx;
-  font-weight: 600;
-  letter-spacing: 1rpx;
+  background: #f6f6f6;
+  color: #8a8a8a;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 22rpx;
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
   white-space: nowrap;
-}
-
-.badge--demo {
-  background: #f7ecdf;
-  color: #8b5c32;
-  border: 1rpx dashed rgba(139, 92, 50, 0.3);
 }

@@ -1,14 +1,11 @@
 <view class="page meals-page">
-  <view class="meals-head">
-    <view class="eyebrow">{{dateLabel}}</view>
-    <view class="meals-title">今天的记录</view>
-    <view class="meals-sub">每一餐都算数，先看清，再慢慢调整。</view>
+  <view class="meals-top">
+    <text class="meals-date">{{dateLabel}}</text>
+    <text wx:if="{{isDemo || hasMock}}" class="meals-mode">演示数据</text>
   </view>
 
-  <view wx:if="{{isDemo || hasMock}}" class="demo-banner">
-    <view class="demo-banner__dot"></view>
-    <text wx:if="{{isDemo}}">本地演示模式：以下记录和营养数值都是示例，不会上传照片。</text>
-    <text wx:else>服务端当前为演示模式：以下记录中的营养数值不是真实照片识别结果。</text>
+  <view wx:if="{{isDemo || hasMock}}" class="demo-banner meals-demo">
+    演示数据 · 不代表真实分析
   </view>
 
   <view wx:if="{{loading}}" class="skeleton-list">
@@ -24,67 +21,58 @@
     </view>
   </view>
 
-  <view wx:elif="{{error}}" class="error-card">
-    <view class="error-card__title">今天的记录暂时没有加载出来</view>
-    <view class="error-card__message">{{error}}</view>
-    <button class="btn btn-secondary btn-small" bindtap="onRetry">再试一次</button>
+  <view wx:elif="{{error}}" class="meals-error">
+    <view class="meals-error__text">{{error}}</view>
+    <button class="meals-error__retry" bindtap="onRetry">重试</button>
   </view>
 
   <empty-state
     wx:elif="{{meals.length === 0}}"
     title="今天还没有记录"
-    description="拍下第一餐，看看这顿饭的大致营养，也可以听听下一餐怎么搭。"
-    action-text="拍照看看"
+    description="拍一张，看看这顿饭。"
+    action-text="拍照"
     bind:action="onCapture"
   />
 
   <block wx:else>
-    <view class="summary-card">
-      <view class="summary-card__head">
-        <view>
-          <view class="summary-card__title">今天的大致摄入</view>
-          <view class="summary-card__sub">已记录 {{summary.count}} 餐 · 估算范围</view>
-        </view>
-        <view class="summary-card__count">{{summary.count}}</view>
+    <view class="summary">
+      <view class="summary__head">
+        <text class="summary__title">今日估算</text>
+        <text class="summary__count">{{summary.count}} 餐</text>
       </view>
-      <view class="summary-grid">
-        <view class="summary-cell">
-          <view class="summary-cell__label">热量</view>
-          <view class="summary-cell__value">{{summary.calories}}</view>
-          <view class="summary-cell__unit">千卡</view>
+      <view class="summary__grid">
+        <view class="summary__cell">
+          <view class="summary__label">热量</view>
+          <view class="summary__value">{{summary.calories}}</view>
+          <view class="summary__unit">千卡</view>
         </view>
-        <view class="summary-cell summary-cell--center">
-          <view class="summary-cell__label">蛋白质</view>
-          <view class="summary-cell__value">{{summary.protein}}</view>
-          <view class="summary-cell__unit">克</view>
+        <view class="summary__cell summary__cell--center">
+          <view class="summary__label">蛋白质</view>
+          <view class="summary__value">{{summary.protein}}</view>
+          <view class="summary__unit">克</view>
         </view>
-        <view class="summary-cell summary-cell--right">
-          <view class="summary-cell__label">脂肪</view>
-          <view class="summary-cell__value">{{summary.fat}}</view>
-          <view class="summary-cell__unit">克</view>
+        <view class="summary__cell summary__cell--right">
+          <view class="summary__label">脂肪</view>
+          <view class="summary__value">{{summary.fat}}</view>
+          <view class="summary__unit">克</view>
         </view>
       </view>
-      <view class="summary-card__note">这是根据记录累加的估算值，不能代表全天精确摄入。</view>
+      <view class="summary__note">区间估算，仅供日常参考。</view>
     </view>
 
-    <view class="meals-section">
-      <view class="meals-section__title">每一餐</view>
-      <meal-card
-        wx:for="{{meals}}"
-        wx:key="id"
-        meal="{{item}}"
-        bind:select="onOpenMeal"
-      />
-    </view>
+    <view class="section-label">记录</view>
+    <meal-card
+      wx:for="{{meals}}"
+      wx:key="id"
+      meal="{{item}}"
+      bind:select="onOpenMeal"
+    />
 
-    <button class="add-meal" bindtap="onCapture">
+    <button class="add-meal" hover-class="add-meal--pressed" bindtap="onCapture">
       <text class="add-meal__plus">＋</text>
-      <text>再记录一餐</text>
+      <text>记录一餐</text>
     </button>
   </block>
 
-  <view class="privacy-foot">
-    <view class="privacy-foot__dot"></view>
-    <text>记录和营养估算只对你自己可见。照片分析完成后即删除。</text>
-  </view>
+  <view class="privacy-foot">记录仅自己可见。照片分析后删除。</view>
 </view>

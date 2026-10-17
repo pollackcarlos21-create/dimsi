@@ -1,7 +1,7 @@
 import { api } from '../../services/api';
 import type { MealRecord } from '../../types/contracts';
 import { userMessage } from '../../utils/errors';
-import { formatDateLabel, formatRange, greeting } from '../../utils/format';
+import { formatDateLabel, formatRange } from '../../utils/format';
 
 interface HomeSummary {
   count: number;
@@ -11,7 +11,6 @@ interface HomeSummary {
 
 Page({
   data: {
-    greeting: '',
     dateLabel: '',
     isDemo: api.mode === 'local_mock',
     hasMock: false,
@@ -31,7 +30,6 @@ Page({
 
   updateHeader() {
     this.setData({
-      greeting: greeting(),
       dateLabel: formatDateLabel(),
     });
   },

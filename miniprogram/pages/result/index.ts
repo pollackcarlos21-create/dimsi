@@ -56,6 +56,7 @@ interface ResultData {
   cautions: CautionView[];
   warnings: string[];
   showDetails: boolean;
+  showFoods: boolean;
   methodText: string;
   errorTitle: string;
   errorMessage: string;
@@ -86,20 +87,20 @@ function unlinkQuiet(path: string): void {
 }
 
 function errorTitleFor(code: string): string {
-  if (code === 'QUOTA_EXCEEDED') return '今天先到这里';
-  if (code === 'RATE_LIMITED') return '慢一点，马上就好';
-  if (code === 'NETWORK_ERROR' || code === 'CLOUD_NOT_CONFIGURED') return '暂时没连上';
-  if (code === 'UPLOAD_EXPIRED' || code === 'UPLOAD_NOT_FOUND') return '照片需要重新上传';
-  if (IMAGE_ERROR_CODES.has(code)) return '这张照片需要换一张';
-  if (code === 'RECOGNITION_EMPTY' || code === 'RECOGNITION_FAILED') return '这次没看清';
-  return '这次没完成';
+  if (code === 'QUOTA_EXCEEDED') return '今日次数已用完';
+  if (code === 'RATE_LIMITED') return '稍后再试';
+  if (code === 'NETWORK_ERROR' || code === 'CLOUD_NOT_CONFIGURED') return '连接失败';
+  if (code === 'UPLOAD_EXPIRED' || code === 'UPLOAD_NOT_FOUND') return '照片已过期';
+  if (IMAGE_ERROR_CODES.has(code)) return '换一张照片';
+  if (code === 'RECOGNITION_EMPTY' || code === 'RECOGNITION_FAILED') return '没有看清';
+  return '分析失败';
 }
 
 Page({
   data: {
     state: 'loading',
-    stageText: '正在看看这顿饭……',
-    stageHint: '先认菜，再估算营养',
+    stageText: '正在分析…',
+    stageHint: '',
     isFresh: false,
     isDemoMode: api.mode === 'local_mock',
     meal: null,
@@ -108,6 +109,7 @@ Page({
     cautions: [],
     warnings: [],
     showDetails: false,
+    showFoods: false,
     methodText: '',
     errorTitle: '',
     errorMessage: '',
@@ -136,8 +138,8 @@ Page({
         null;
       if (!pending) {
         this.showFailure({
-          title: '照片已经失效',
-          message: '这张照片没有准备好，请重新拍一张。',
+          title: '照片失效',
+          message: '请重新拍一张。',
           retryable: false,
           camera: true,
         });
@@ -147,16 +149,16 @@ Page({
         isFresh: true,
         pending,
         state: 'loading',
-        stageText: '正在准备照片……',
-        stageHint: '照片只在这次分析中使用',
+        stageText: '正在准备…',
+        stageHint: '',
         busy: false,
       });
       void this.runAnalysis();
       return;
     }
     this.showFailure({
-      title: '没有找到这顿饭',
-      message: '请从今天记录里重新打开，或者拍一张新的照片。',
+      title: '没有找到',
+      message: '请返回重新打开，或拍一张新照片。',
       retryable: false,
       camera: false,
     });
@@ -182,7 +184,7 @@ Page({
     const pending = this.data.pending;
     if (!pending) {
       this.showFailure({
-        title: '照片已经失效',
+        title: '照片失效',
         message: '请重新选择一张照片。',
         retryable: false,
         camera: true,
@@ -193,8 +195,8 @@ Page({
     this.setData({
       busy: true,
       state: 'loading',
-      stageText: this.data.ticket ? '正在看看这顿饭……' : '正在准备照片……',
-      stageHint: this.data.ticket ? '先认菜，再估算营养' : '照片只在这次分析中使用',
+      stageText: this.data.ticket ? '正在分析…' : '正在准备…',
+      stageHint: '',
     });
 
     let ticket = this.data.ticket;
@@ -212,8 +214,8 @@ Page({
         this.setData({
           ticket,
           prepareMs,
-          stageText: '正在看看这顿饭……',
-          stageHint: '先认菜，再估算营养',
+          stageText: '正在分析…',
+          stageHint: '',
         });
       }
 
@@ -270,8 +272,8 @@ Page({
     if (!silent) {
       this.setData({
         state: 'loading',
-        stageText: '正在取回这顿饭……',
-        stageHint: '稍等一下',
+        stageText: '正在加载…',
+        stageHint: '',
         errorMessage: '',
       });
     }
@@ -368,6 +370,7 @@ Page({
       cautions,
       warnings: meal.warnings,
       showDetails: false,
+      showFoods: false,
       methodText:
         meal.source === 'mock'
           ? '当前为演示模式：营养值来自固定示例，并非从这张照片识别计算。真实模式会先识别食物与份量，再由服务端食物成分数据计算。'
@@ -424,6 +427,10 @@ Page({
 
   onToggleDetails() {
     this.setData({ showDetails: !this.data.showDetails });
+  },
+
+  onToggleFoods() {
+    this.setData({ showFoods: !this.data.showFoods });
   },
 
   onBackToday() {
