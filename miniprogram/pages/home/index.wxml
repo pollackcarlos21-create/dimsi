@@ -1,7 +1,7 @@
 <view class="page home">
   <view class="home-copy">
-    <view class="home-title">今天吃了什么？</view>
-    <view class="home-sub">拍张照片，看看。</view>
+    <view class="home-title">今天吃了什么</view>
+    <view class="home-sub">拍张照片看看</view>
   </view>
 
   <view class="home-main">
@@ -12,9 +12,17 @@
       bindtap="onCamera"
       aria-label="拍照看看"
     >
-      <view class="camera">
-        <view class="camera__top"></view>
-        <view class="camera__lens"></view>
+      <view class="rainbow rainbow--red" aria-hidden="true"></view>
+      <view class="rainbow rainbow--orange" aria-hidden="true"></view>
+      <view class="rainbow rainbow--yellow" aria-hidden="true"></view>
+      <view class="rainbow rainbow--green" aria-hidden="true"></view>
+      <view class="rainbow rainbow--blue" aria-hidden="true"></view>
+      <view class="rainbow rainbow--purple" aria-hidden="true"></view>
+      <view class="shutter__face" aria-hidden="true">
+        <view class="camera">
+          <view class="camera__top"></view>
+          <view class="camera__lens"></view>
+        </view>
       </view>
     </button>
 
@@ -29,35 +37,36 @@
   </view>
 
   <view class="home-secondary">
-    <view wx:if="{{summaryLoading}}" class="home-skeleton"></view>
-
-    <view wx:elif="{{loadError}}" class="home-error">
-      <text>{{loadError}}</text>
-      <text class="home-error__retry" bindtap="onRetrySummary">重试</text>
-    </view>
-
-    <button
-      wx:elif="{{summary}}"
-      class="home-link"
-      hover-class="home-link--pressed"
-      bindtap="onViewToday"
-    >
-      <view class="home-link__main">
-        <text>今天</text>
-        <text class="home-link__dot">·</text>
-        <text>{{summary.count}} 餐</text>
+    <button class="home-tile" hover-class="home-tile--pressed" bindtap="onViewToday">
+      <view class="tile-icon" aria-hidden="true">
+        <view class="calendar-icon">
+          <view class="calendar-icon__top"></view>
+          <view class="calendar-icon__dot calendar-icon__dot--left"></view>
+          <view class="calendar-icon__dot calendar-icon__dot--right"></view>
+        </view>
       </view>
-      <text class="home-link__meta">{{summary.calories}} 千卡</text>
-      <text class="home-link__arrow">›</text>
+      <view class="home-tile__copy">
+        <text class="home-tile__title">今天的记录</text>
+        <text wx:if="{{summaryLoading}}" class="home-tile__meta">正在加载</text>
+        <text wx:elif="{{summary}}" class="home-tile__meta">{{summary.count}} 餐 · {{summary.calories}} 千卡</text>
+        <text wx:elif="{{loadError}}" class="home-tile__meta">点击查看</text>
+        <text wx:else class="home-tile__meta">还没有记录</text>
+      </view>
+      <text class="home-tile__arrow">›</text>
     </button>
 
-    <view wx:else class="home-link home-link--empty">
-      <text>今天还没有记录</text>
-    </view>
-
-    <button class="home-chat" hover-class="home-chat--pressed" bindtap="onOpenChat">
-      <text>问问助手</text>
-      <text class="home-chat__arrow">›</text>
+    <button class="home-tile" hover-class="home-tile--pressed" bindtap="onOpenChat">
+      <view class="tile-icon" aria-hidden="true">
+        <view class="chat-icon">
+          <view class="chat-icon__dot"></view>
+          <view class="chat-icon__dot"></view>
+          <view class="chat-icon__dot"></view>
+        </view>
+      </view>
+      <view class="home-tile__copy">
+        <text class="home-tile__title">问问助手</text>
+      </view>
+      <text class="home-tile__arrow">›</text>
     </button>
   </view>
 

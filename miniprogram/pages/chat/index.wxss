@@ -80,18 +80,25 @@
 }
 
 .chat-empty {
-  padding: 36rpx 0 20rpx;
+  width: auto;
+  margin-right: -40rpx;
+  margin-left: -40rpx;
+  padding: 72rpx 0 20rpx;
+  text-align: center;
 }
 
 .chat-empty__title {
   color: #202124;
-  font-size: 38rpx;
+  font-size: 42rpx;
   font-weight: 600;
-  letter-spacing: -0.5rpx;
+  line-height: 1.35;
+  text-align: center;
 }
 
 .quick-list {
-  margin-top: 32rpx;
+  margin-top: 40rpx;
+  margin-right: 40rpx;
+  margin-left: 40rpx;
 }
 
 .quick-item {
@@ -144,11 +151,15 @@
 
 .composer__box {
   display: flex;
-  align-items: flex-end;
-  gap: 12rpx;
-  padding: 10rpx 10rpx 10rpx 24rpx;
+  align-items: center;
+  gap: 10rpx;
+  min-height: 112rpx;
+  padding: 10rpx 10rpx 10rpx 26rpx;
   border-radius: 48rpx;
-  background: #f6f6f6;
+  background: #ffffff;
+  box-shadow: 0 2rpx 8rpx rgba(32, 33, 36, 0.03),
+    0 10rpx 30rpx rgba(32, 33, 36, 0.045),
+    0 24rpx 64rpx rgba(32, 33, 36, 0.03);
 }
 
 .composer__input {
@@ -165,13 +176,14 @@
 
 .send-btn {
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 0 88rpx;
   align-items: center;
   justify-content: center;
-  width: 80rpx;
-  height: 80rpx;
+  width: 88rpx;
+  height: 88rpx;
+  padding: 0;
   border-radius: 50%;
-  background: #e8e8e8;
+  background: #f0f0f0;
   transition: background 160ms ease, transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -184,15 +196,40 @@
 }
 
 .send-arrow {
-  width: 15rpx;
-  height: 15rpx;
-  border-top: 4rpx solid #b0b0b0;
-  border-right: 4rpx solid #b0b0b0;
-  transform: rotate(45deg) translate(-2rpx, 2rpx);
+  position: relative;
+  width: 28rpx;
+  height: 30rpx;
 }
 
-.send-btn--active .send-arrow {
-  border-color: #ffffff;
+.send-arrow__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-right: 9rpx solid transparent;
+  border-bottom: 13rpx solid #b0b0b0;
+  border-left: 9rpx solid transparent;
+  transform: translateX(-50%);
+}
+
+.send-arrow__stem {
+  position: absolute;
+  top: 12rpx;
+  left: 50%;
+  width: 4rpx;
+  height: 17rpx;
+  border-radius: 2rpx;
+  background: #b0b0b0;
+  transform: translateX(-50%);
+}
+
+.send-btn--active .send-arrow__head {
+  border-bottom-color: #ffffff;
+}
+
+.send-btn--active .send-arrow__stem {
+  background: #ffffff;
 }
 
 .composer__foot {

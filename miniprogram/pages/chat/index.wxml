@@ -94,7 +94,10 @@
         disabled="{{!canSend}}"
         aria-label="发送消息"
       >
-        <view class="send-arrow"></view>
+        <view class="send-arrow" aria-hidden="true">
+          <view class="send-arrow__head"></view>
+          <view class="send-arrow__stem"></view>
+        </view>
       </button>
     </view>
     <view class="composer__foot">一般饮食信息，不替代医疗建议</view>

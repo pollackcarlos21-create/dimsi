@@ -6,7 +6,6 @@ import { formatRange } from '../../utils/format';
 interface HomeSummary {
   count: number;
   calories: string;
-  protein: string;
 }
 
 Page({
@@ -32,12 +31,10 @@ Page({
         return;
       }
       const calories = sumRange(meals, 'caloriesKcal');
-      const protein = sumRange(meals, 'proteinG');
       this.setData({
         summary: {
           count: meals.length,
           calories: formatRange(calories),
-          protein: formatRange(protein),
         },
         hasMock: meals.some((meal) => meal.source === 'mock'),
         summaryLoading: false,
@@ -80,10 +77,6 @@ Page({
 
   onOpenChat() {
     wx.switchTab({ url: '/pages/chat/index' });
-  },
-
-  onRetrySummary() {
-    void this.loadSummary();
   },
 });
 
