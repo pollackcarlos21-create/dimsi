@@ -1,29 +1,12 @@
 .home {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   padding-top: 24rpx;
 }
 
-.home-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20rpx;
-}
-
-.home-date {
-  color: #8a8a8a;
-  font-size: 24rpx;
-  font-weight: 500;
-}
-
-.home-mode {
-  color: #b0b0b0;
-  font-size: 22rpx;
-}
-
 .home-copy {
-  margin-top: 76rpx;
+  margin-top: 24rpx;
 }
 
 .home-title {
@@ -45,34 +28,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 76rpx;
+  margin-top: 120rpx;
 }
 
 .shutter {
   display: flex;
-  flex-direction: column;
+  flex: 0 0 280rpx;
   align-items: center;
   justify-content: center;
-  width: 340rpx;
-  height: 340rpx;
+  width: 280rpx;
+  min-width: 280rpx;
+  max-width: 280rpx;
+  height: 280rpx;
+  min-height: 280rpx;
+  max-height: 280rpx;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  background: #202124;
+  background: #9cb8d2;
   color: #ffffff;
-  box-shadow: 0 16rpx 60rpx rgba(0, 0, 0, 0.11),
-    0 36rpx 120rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 18rpx 56rpx rgba(121, 150, 181, 0.2),
+    0 48rpx 120rpx rgba(121, 150, 181, 0.1);
   transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 180ms ease;
+    box-shadow 180ms ease;
 }
 
 .shutter--pressed {
-  transform: scale(0.97);
-  opacity: 0.92;
+  transform: scale(0.96);
+  box-shadow: 0 10rpx 36rpx rgba(121, 150, 181, 0.18),
+    0 28rpx 72rpx rgba(121, 150, 181, 0.08);
 }
 
 .camera {
   position: relative;
-  width: 72rpx;
-  height: 54rpx;
+  width: 70rpx;
+  height: 52rpx;
   border: 4rpx solid #ffffff;
   border-radius: 14rpx;
 }
@@ -81,7 +71,7 @@
   position: absolute;
   top: -16rpx;
   left: 17rpx;
-  width: 30rpx;
+  width: 28rpx;
   height: 13rpx;
   border: 4rpx solid #ffffff;
   border-bottom: 0;
@@ -99,22 +89,20 @@
   transform: translate(-50%, -50%);
 }
 
-.shutter__label {
-  margin-top: 30rpx;
-  color: #ffffff;
-  font-size: 33rpx;
-  font-weight: 600;
-  letter-spacing: 1rpx;
-}
-
 .album {
-  min-height: 88rpx;
-  margin-top: 34rpx;
-  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-height: 96rpx;
+  margin-top: 32rpx;
+  padding: 0 36rpx;
+  background: transparent;
   color: #8a8a8a;
   font-size: 28rpx;
   font-weight: 500;
-  line-height: 88rpx;
+  line-height: 96rpx;
+  text-align: center;
   transition: opacity 160ms ease;
 }
 
@@ -124,11 +112,11 @@
 
 .home-secondary {
   margin-top: auto;
-  padding-top: 72rpx;
+  padding-top: 96rpx;
 }
 
 .home-skeleton {
-  height: 92rpx;
+  height: 84rpx;
   border-radius: 40rpx;
   background: #fafafa;
   animation: home-breathe 1.5s ease-in-out infinite;
@@ -148,18 +136,16 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 92rpx;
-  padding: 0 26rpx;
-  border-radius: 40rpx;
-  background: #fafafa;
-  color: #202124;
-  font-size: 26rpx;
+  min-height: 88rpx;
+  padding: 0 8rpx;
+  color: #5f6368;
+  font-size: 25rpx;
   text-align: left;
   transition: opacity 160ms ease;
 }
 
 .home-link--pressed {
-  opacity: 0.68;
+  opacity: 0.6;
 }
 
 .home-link--empty {
@@ -203,8 +189,7 @@
   justify-content: space-between;
   width: 100%;
   min-height: 84rpx;
-  margin-top: 8rpx;
-  padding: 0 26rpx;
+  padding: 0 8rpx;
   color: #8a8a8a;
   font-size: 25rpx;
   transition: opacity 160ms ease;
@@ -225,8 +210,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 20rpx;
-  min-height: 92rpx;
-  padding: 0 24rpx;
+  min-height: 88rpx;
+  padding: 0 20rpx;
   border-radius: 40rpx;
   background: #fdf5f4;
   color: #b3261e;
@@ -239,8 +224,20 @@
   font-weight: 600;
 }
 
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  margin-top: 24rpx;
+}
+
+.home-mode {
+  color: #b0b0b0;
+  font-size: 22rpx;
+}
+
 .home-privacy {
-  margin-top: 28rpx;
   color: #b0b0b0;
   font-size: 23rpx;
   line-height: 1.5;
@@ -249,19 +246,14 @@
 
 @media (max-height: 680px) {
   .home-copy {
-    margin-top: 52rpx;
+    margin-top: 8rpx;
   }
 
   .home-main {
-    margin-top: 52rpx;
-  }
-
-  .shutter {
-    width: 300rpx;
-    height: 300rpx;
+    margin-top: 80rpx;
   }
 
   .home-secondary {
-    padding-top: 40rpx;
+    padding-top: 48rpx;
   }
 }

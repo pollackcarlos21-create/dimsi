@@ -1,11 +1,4 @@
 <view class="page home">
-  <view class="home-top">
-    <text class="home-date">{{dateLabel}}</text>
-    <text wx:if="{{isDemo || hasMock}}" class="home-mode">
-      {{isDemo ? '演示模式' : '含演示数据'}}
-    </text>
-  </view>
-
   <view class="home-copy">
     <view class="home-title">今天吃了什么？</view>
     <view class="home-sub">拍张照片，看看。</view>
@@ -23,7 +16,6 @@
         <view class="camera__top"></view>
         <view class="camera__lens"></view>
       </view>
-      <text class="shutter__label">拍照看看</text>
     </button>
 
     <button
@@ -69,5 +61,10 @@
     </button>
   </view>
 
-  <view class="home-privacy">照片仅用于当次分析，完成后删除。</view>
+  <view class="home-footer">
+    <text wx:if="{{isDemo || hasMock}}" class="home-mode">
+      {{isDemo ? '演示模式' : '含演示数据'}}
+    </text>
+    <text class="home-privacy">照片仅用于当次分析，完成后删除。</text>
+  </view>
 </view>

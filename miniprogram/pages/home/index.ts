@@ -1,7 +1,7 @@
 import { api } from '../../services/api';
 import type { MealRecord } from '../../types/contracts';
 import { userMessage } from '../../utils/errors';
-import { formatDateLabel, formatRange } from '../../utils/format';
+import { formatRange } from '../../utils/format';
 
 interface HomeSummary {
   count: number;
@@ -11,7 +11,6 @@ interface HomeSummary {
 
 Page({
   data: {
-    dateLabel: '',
     isDemo: api.mode === 'local_mock',
     hasMock: false,
     summary: null as HomeSummary | null,
@@ -19,19 +18,8 @@ Page({
     loadError: '',
   },
 
-  onLoad() {
-    this.updateHeader();
-  },
-
   onShow() {
-    this.updateHeader();
     void this.loadSummary();
-  },
-
-  updateHeader() {
-    this.setData({
-      dateLabel: formatDateLabel(),
-    });
   },
 
   async loadSummary() {
