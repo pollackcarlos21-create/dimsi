@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/meals/index",
+    "pages/chat/index",
+    "pages/settings/index",
+    "pages/capture/index",
+    "pages/result/index",
+    "pages/correction/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F8F7F4",
+    "navigationBarTitleText": "知食",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8F7F4",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8B877E",
+    "selectedColor": "#547A65",
+    "backgroundColor": "#FBFAF7",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/meals/index",
+        "text": "今天",
+        "iconPath": "assets/tabbar/meals.png",
+        "selectedIconPath": "assets/tabbar/meals-active.png"
+      },
+      {
+        "pagePath": "pages/chat/index",
+        "text": "助手",
+        "iconPath": "assets/tabbar/chat.png",
+        "selectedIconPath": "assets/tabbar/chat-active.png"
+      },
+      {
+        "pagePath": "pages/settings/index",
+        "text": "设置",
+        "iconPath": "assets/tabbar/settings.png",
+        "selectedIconPath": "assets/tabbar/settings-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "用于拍摄食物照片，帮助你了解这一餐的大致营养情况"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

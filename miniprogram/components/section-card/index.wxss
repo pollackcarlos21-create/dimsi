@@ -1,0 +1,35 @@
+.section-card {
+  padding: 32rpx;
+  border: 1rpx solid #e8e4dc;
+  border-radius: 32rpx;
+  background: #fffefc;
+  box-shadow: 0 10rpx 36rpx rgba(73, 66, 52, 0.045);
+}
+
+.section-card--warm {
+  border-color: #eee2d1;
+  background: #fbf5ec;
+  box-shadow: none;
+}
+
+.section-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.section-card__title {
+  color: #242424;
+  font-size: 31rpx;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.section-card__subtitle {
+  margin-top: 6rpx;
+  color: #837f76;
+  font-size: 24rpx;
+  line-height: 1.5;
+}

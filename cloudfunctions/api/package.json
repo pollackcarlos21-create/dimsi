@@ -1,0 +1,10 @@
+{
+  "name": "zhishi-api",
+  "version": "0.4.0",
+  "private": true,
+  "description": "知食云函数统一入口",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "4.0.2"
+  }
+}

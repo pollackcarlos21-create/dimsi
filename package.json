@@ -1,0 +1,30 @@
+{
+  "name": "zhishi-family-nutrition",
+  "version": "0.4.0",
+  "private": true,
+  "description": "知食 —— 面向中国家庭的 AI 营养助手（微信小程序）",
+  "scripts": {
+    "typecheck": "npm run typecheck:miniprogram && npm run typecheck:server",
+    "typecheck:miniprogram": "tsc -p tsconfig.json --noEmit",
+    "typecheck:server": "tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:cloud": "node scripts/build-cloud.mjs",
+    "check": "npm run typecheck && npm run test && npm run build:cloud",
+    "icons": "python3 scripts/generate-tab-icons.py"
+  },
+  "dependencies": {
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "esbuild": "^0.28.2",
+    "miniprogram-api-typings": "5.2.3",
+    "typescript": "5.9.3",
+    "vitest": "^5.0.5",
+    "wx-server-sdk": "4.0.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

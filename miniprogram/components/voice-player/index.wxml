@@ -1,0 +1,40 @@
+<view class="voice">
+  <button
+    class="voice__main"
+    hover-class="voice__main--pressed"
+    bindtap="onToggle"
+    disabled="{{status === 'loading'}}"
+    aria-label="朗读这餐建议"
+  >
+    <view class="voice__icon voice__icon--{{status}}">
+      <view wx:if="{{status === 'loading'}}" class="loading-dots">
+        <view class="loading-dots__dot"></view>
+        <view class="loading-dots__dot"></view>
+        <view class="loading-dots__dot"></view>
+      </view>
+      <view wx:elif="{{status === 'playing'}}" class="pause-bars">
+        <view class="pause-bars__bar"></view>
+        <view class="pause-bars__bar"></view>
+      </view>
+      <view wx:else class="play-triangle"></view>
+    </view>
+    <view class="voice__copy">
+      <view class="voice__title">
+        <block wx:if="{{status === 'loading'}}">正在准备语音…</block>
+        <block wx:elif="{{status === 'playing'}}">正在朗读</block>
+        <block wx:elif="{{status === 'paused'}}">已暂停，点一下继续</block>
+        <block wx:elif="{{status === 'ended'}}">朗读完成，点一下重播</block>
+        <block wx:elif="{{status === 'error'}}">再试一次朗读</block>
+        <block wx:else>听一听这餐建议</block>
+      </view>
+      <view class="voice__hint">
+        {{status === 'error' ? '文字建议不受影响' : '可以随时暂停、重播或调整语速'}}
+      </view>
+    </view>
+    <view class="voice__speed" catchtap="onCycleRate" aria-role="button" aria-label="切换朗读语速">
+      {{rateLabel}}
+    </view>
+  </button>
+  <view wx:if="{{error}}" class="voice__error">{{error}}</view>
+  <view class="voice__note">语音需要联网生成；失败时文字内容仍可正常查看。</view>
+</view>

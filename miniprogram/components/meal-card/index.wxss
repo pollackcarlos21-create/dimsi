@@ -1,0 +1,61 @@
+.meal-card {
+  margin-bottom: 20rpx;
+  padding: 28rpx 28rpx 26rpx;
+  border: 1rpx solid #e8e4dc;
+  border-radius: 28rpx;
+  background: #fffefc;
+  box-shadow: 0 10rpx 30rpx rgba(73, 66, 52, 0.045);
+}
+
+.meal-card--pressed {
+  opacity: 0.86;
+}
+
+.meal-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.meal-card__type {
+  color: #837f76;
+  font-size: 23rpx;
+  font-weight: 500;
+  letter-spacing: 1rpx;
+}
+
+.meal-card__name {
+  margin-top: 12rpx;
+  color: #242424;
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.meal-card__meta {
+  display: flex;
+  align-items: baseline;
+  margin-top: 14rpx;
+  color: #77736a;
+  font-size: 25rpx;
+}
+
+.meal-card__number {
+  color: #436450;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.meal-card__dot {
+  margin: 0 12rpx;
+  color: #b7b1a7;
+}
+
+.meal-card__arrow {
+  margin-left: auto;
+  color: #aaa49a;
+  font-size: 38rpx;
+  font-weight: 300;
+  line-height: 1;
+}

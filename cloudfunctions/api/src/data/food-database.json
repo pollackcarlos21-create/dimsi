@@ -1,0 +1,962 @@
+{
+  "version": "2026.10.1",
+  "scope": "中国家庭常见家常菜、主食、早餐与水果的少量精选估算数据；每 100 克可食部，按常见熟制状态整理。",
+  "license": "本精选数据集由本项目编辑整理，按 CC BY 4.0 提供；营养数值为区间化估算，不复制任何商业数据库的完整内容。",
+  "sources": [
+    {
+      "name": "中国营养学会《中国居民膳食指南（2022）》",
+      "use": "膳食结构、少油少盐与多样化原则",
+      "url": "https://www.cnsoc.org/"
+    },
+    {
+      "name": "中国疾病预防控制中心营养与健康所《中国食物成分表（标准版·第6版）》",
+      "use": "常见食物营养量级参考",
+      "url": "https://www.chinanutri.cn/"
+    },
+    {
+      "name": "USDA FoodData Central",
+      "use": "公开食物成分交叉校验（美国农业部，公共领域）",
+      "url": "https://fdc.nal.usda.gov/"
+    }
+  ],
+  "limitations": "中餐做法、用油、用盐和份量差异很大。本数据不用于医疗诊断、疾病管理或精确营养处方。",
+  "items": [
+    {
+      "id": "rice_cooked",
+      "name": "米饭",
+      "aliases": ["白米饭", "大米饭", "白饭", "米饭一碗", "蒸米饭"],
+      "category": "staple",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [112, 125],
+        "proteinG": [2.3, 2.9],
+        "fatG": [0.2, 0.4]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "congee_rice",
+      "name": "白米粥",
+      "aliases": ["粥", "稀饭", "大米粥", "白粥"],
+      "category": "staple",
+      "defaultPortionG": 300,
+      "per100g": {
+        "caloriesKcal": [40, 55],
+        "proteinG": [0.9, 1.3],
+        "fatG": [0.1, 0.3]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "steamed_bun",
+      "name": "馒头",
+      "aliases": ["白馒头", "蒸馒头", "花卷"],
+      "category": "staple",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [210, 235],
+        "proteinG": [6.5, 7.5],
+        "fatG": [0.8, 1.4]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "noodles_cooked",
+      "name": "面条（煮）",
+      "aliases": ["面条", "汤面", "阳春面", "煮面", "挂面"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [100, 120],
+        "proteinG": [3.2, 4.5],
+        "fatG": [0.3, 1.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "rice_noodles",
+      "name": "米线（煮）",
+      "aliases": ["米线", "米粉", "河粉", "粿条"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [100, 125],
+        "proteinG": [1.5, 2.5],
+        "fatG": [0.2, 1.2]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "fried_rice",
+      "name": "蛋炒饭",
+      "aliases": ["炒饭", "鸡蛋炒饭", "扬州炒饭"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [165, 210],
+        "proteinG": [4.0, 6.0],
+        "fatG": [5.0, 8.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "fried_noodles",
+      "name": "炒面",
+      "aliases": ["炒面条", "酱油炒面"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [160, 205],
+        "proteinG": [4.0, 6.5],
+        "fatG": [5.0, 8.5]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "dumplings_pork_cabbage",
+      "name": "猪肉白菜饺子",
+      "aliases": ["饺子", "水饺", "猪肉饺子", "白菜饺子"],
+      "category": "staple",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [210, 270],
+        "proteinG": [7.5, 10.0],
+        "fatG": [7.0, 12.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "wonton",
+      "name": "馄饨",
+      "aliases": ["小馄饨", "云吞", "抄手"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [95, 140],
+        "proteinG": [4.0, 7.0],
+        "fatG": [2.5, 6.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "baozi_pork",
+      "name": "猪肉包子",
+      "aliases": ["包子", "肉包", "小笼包", "鲜肉包"],
+      "category": "staple",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [220, 280],
+        "proteinG": [7.0, 10.0],
+        "fatG": [6.0, 11.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "youtiao",
+      "name": "油条",
+      "aliases": ["炸油条"],
+      "category": "pastry",
+      "defaultPortionG": 80,
+      "per100g": {
+        "caloriesKcal": [360, 400],
+        "proteinG": [6.0, 7.5],
+        "fatG": [19.0, 24.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "whole_wheat_bread",
+      "name": "全麦面包",
+      "aliases": ["全麦吐司", "吐司", "面包"],
+      "category": "staple",
+      "defaultPortionG": 70,
+      "per100g": {
+        "caloriesKcal": [235, 270],
+        "proteinG": [8.0, 10.0],
+        "fatG": [3.0, 5.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "sweet_potato",
+      "name": "蒸红薯",
+      "aliases": ["红薯", "地瓜", "番薯"],
+      "category": "staple",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [80, 100],
+        "proteinG": [1.2, 1.8],
+        "fatG": [0.1, 0.3]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "corn_cooked",
+      "name": "煮玉米",
+      "aliases": ["玉米", "甜玉米", "玉米棒"],
+      "category": "staple",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [95, 125],
+        "proteinG": [3.0, 4.5],
+        "fatG": [0.8, 1.8]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "pumpkin_steamed",
+      "name": "蒸南瓜",
+      "aliases": ["南瓜", "老南瓜"],
+      "category": "staple",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [25, 45],
+        "proteinG": [0.5, 1.0],
+        "fatG": [0.1, 0.3]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "oatmeal",
+      "name": "燕麦粥",
+      "aliases": ["燕麦", "麦片粥", "燕麦片"],
+      "category": "staple",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [55, 85],
+        "proteinG": [1.8, 3.5],
+        "fatG": [0.8, 2.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "leafy_greens_stirfried",
+      "name": "清炒绿叶菜",
+      "aliases": ["炒青菜", "清炒菠菜", "炒生菜", "炒油麦菜", "小白菜", "青菜"],
+      "category": "vegetable",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [55, 95],
+        "proteinG": [1.3, 2.5],
+        "fatG": [3.5, 7.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "broccoli_stirfried",
+      "name": "清炒西兰花",
+      "aliases": ["西兰花", "西蓝花", "炒花菜", "花椰菜"],
+      "category": "vegetable",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [55, 85],
+        "proteinG": [2.2, 3.5],
+        "fatG": [3.0, 6.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "cucumber_salad",
+      "name": "凉拌黄瓜",
+      "aliases": ["黄瓜", "拍黄瓜", "凉拌瓜条"],
+      "category": "vegetable",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [30, 60],
+        "proteinG": [0.6, 1.2],
+        "fatG": [2.0, 4.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "potato_stirfried",
+      "name": "炒土豆丝",
+      "aliases": ["土豆丝", "酸辣土豆丝", "土豆", "马铃薯"],
+      "category": "vegetable",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [95, 125],
+        "proteinG": [1.7, 2.5],
+        "fatG": [4.5, 8.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "cabbage_vinegar",
+      "name": "醋溜白菜",
+      "aliases": ["炒白菜", "酸辣白菜", "白菜", "大白菜"],
+      "category": "vegetable",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [45, 80],
+        "proteinG": [1.0, 1.8],
+        "fatG": [3.0, 6.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "tomato_egg",
+      "name": "番茄炒蛋",
+      "aliases": ["西红柿炒鸡蛋", "番茄炒鸡蛋", "西红柿炒蛋"],
+      "category": "mixed",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [100, 140],
+        "proteinG": [5.0, 7.5],
+        "fatG": [6.0, 10.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "green_pepper_pork",
+      "name": "青椒肉丝",
+      "aliases": ["青椒炒肉", "尖椒肉丝", "辣椒炒肉"],
+      "category": "mixed",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [135, 185],
+        "proteinG": [8.0, 12.0],
+        "fatG": [8.5, 13.5]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "yuxiang_pork",
+      "name": "鱼香肉丝",
+      "aliases": ["鱼香肉丝盖饭"],
+      "category": "mixed",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [155, 205],
+        "proteinG": [8.0, 12.0],
+        "fatG": [9.0, 15.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "high"
+    },
+    {
+      "id": "kungpao_chicken",
+      "name": "宫保鸡丁",
+      "aliases": ["宫爆鸡丁"],
+      "category": "mixed",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [160, 215],
+        "proteinG": [11.0, 16.0],
+        "fatG": [9.0, 15.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "high"
+    },
+    {
+      "id": "mapo_tofu",
+      "name": "麻婆豆腐",
+      "aliases": ["家常豆腐", "烧豆腐", "豆腐"],
+      "category": "mixed",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [85, 135],
+        "proteinG": [5.5, 8.5],
+        "fatG": [5.0, 9.5]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "high"
+    },
+    {
+      "id": "braised_pork",
+      "name": "红烧肉",
+      "aliases": ["东坡肉", "扣肉"],
+      "category": "meat",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [320, 395],
+        "proteinG": [10.0, 14.0],
+        "fatG": [28.0, 35.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "high"
+    },
+    {
+      "id": "poached_chicken",
+      "name": "白切鸡",
+      "aliases": ["白斩鸡", "清蒸鸡", "鸡肉"],
+      "category": "poultry",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [170, 220],
+        "proteinG": [18.0, 23.0],
+        "fatG": [9.0, 14.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "skinless_chicken",
+      "name": "熟鸡胸肉",
+      "aliases": ["鸡胸肉", "鸡肉丝", "水煮鸡胸"],
+      "category": "poultry",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [150, 175],
+        "proteinG": [25.0, 30.0],
+        "fatG": [3.5, 7.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "steamed_fish",
+      "name": "清蒸鱼",
+      "aliases": ["蒸鱼", "清蒸鲈鱼", "鱼", "鲈鱼", "鲫鱼"],
+      "category": "fish",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [95, 145],
+        "proteinG": [15.0, 21.0],
+        "fatG": [2.5, 6.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "boiled_shrimp",
+      "name": "白灼虾",
+      "aliases": ["虾", "水煮虾", "基围虾", "明虾"],
+      "category": "fish",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [85, 115],
+        "proteinG": [17.0, 22.0],
+        "fatG": [0.8, 2.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "lean_pork",
+      "name": "瘦猪肉（熟）",
+      "aliases": ["瘦肉", "猪里脊", "里脊肉", "猪肉"],
+      "category": "meat",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [165, 210],
+        "proteinG": [24.0, 29.0],
+        "fatG": [6.0, 10.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "braised_beef",
+      "name": "酱牛肉",
+      "aliases": ["牛肉", "卤牛肉", "牛腱子"],
+      "category": "meat",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [175, 220],
+        "proteinG": [24.0, 29.0],
+        "fatG": [7.0, 11.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "high"
+    },
+    {
+      "id": "di_san_xian",
+      "name": "地三鲜",
+      "aliases": ["红烧茄子", "烧茄子", "茄子"],
+      "category": "mixed",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [125, 185],
+        "proteinG": [2.0, 4.0],
+        "fatG": [9.0, 15.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "dry_fried_beans",
+      "name": "干煸豆角",
+      "aliases": ["豆角", "四季豆", "豇豆", "炒豆角"],
+      "category": "vegetable",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [125, 190],
+        "proteinG": [2.5, 5.0],
+        "fatG": [9.0, 15.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "mushu_pork",
+      "name": "木须肉",
+      "aliases": ["木樨肉", "木耳炒肉", "鸡蛋木耳炒肉"],
+      "category": "mixed",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [110, 160],
+        "proteinG": [7.0, 11.0],
+        "fatG": [6.5, 11.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "tofu_northern",
+      "name": "北豆腐",
+      "aliases": ["豆腐块", "老豆腐", "豆腐干"],
+      "category": "soy",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [85, 120],
+        "proteinG": [8.0, 11.0],
+        "fatG": [4.0, 7.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "steamed_egg_custard",
+      "name": "鸡蛋羹",
+      "aliases": ["蒸鸡蛋", "水蒸蛋", "蛋羹"],
+      "category": "egg",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [50, 80],
+        "proteinG": [4.0, 6.0],
+        "fatG": [3.0, 5.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "boiled_egg",
+      "name": "水煮蛋",
+      "aliases": ["煮鸡蛋", "白煮蛋", "鸡蛋"],
+      "category": "egg",
+      "defaultPortionG": 60,
+      "per100g": {
+        "caloriesKcal": [135, 160],
+        "proteinG": [12.0, 14.0],
+        "fatG": [8.0, 11.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "fried_egg",
+      "name": "煎鸡蛋",
+      "aliases": ["煎蛋", "荷包蛋", "太阳蛋"],
+      "category": "egg",
+      "defaultPortionG": 60,
+      "per100g": {
+        "caloriesKcal": [175, 225],
+        "proteinG": [11.0, 14.0],
+        "fatG": [12.0, 18.0]
+      },
+      "oiliness": "high",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "seaweed_egg_soup",
+      "name": "紫菜蛋花汤",
+      "aliases": ["蛋花汤", "紫菜汤", "紫菜鸡蛋汤"],
+      "category": "soup",
+      "defaultPortionG": 300,
+      "per100g": {
+        "caloriesKcal": [15, 35],
+        "proteinG": [0.8, 2.0],
+        "fatG": [0.5, 2.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "winter_melon_rib_soup",
+      "name": "冬瓜排骨汤",
+      "aliases": ["排骨汤", "冬瓜汤", "筒骨汤", "骨头汤"],
+      "category": "soup",
+      "defaultPortionG": 300,
+      "per100g": {
+        "caloriesKcal": [25, 60],
+        "proteinG": [1.5, 4.0],
+        "fatG": [1.0, 4.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "steamed_fish_soup",
+      "name": "鱼汤",
+      "aliases": ["鲫鱼汤", "鱼头汤", "奶白鱼汤"],
+      "category": "soup",
+      "defaultPortionG": 300,
+      "per100g": {
+        "caloriesKcal": [25, 65],
+        "proteinG": [1.5, 4.0],
+        "fatG": [1.0, 4.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "apple",
+      "name": "苹果",
+      "aliases": ["红苹果", "青苹果"],
+      "category": "fruit",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [48, 58],
+        "proteinG": [0.2, 0.4],
+        "fatG": [0.1, 0.3]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "banana",
+      "name": "香蕉",
+      "aliases": ["芭蕉"],
+      "category": "fruit",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [85, 105],
+        "proteinG": [1.0, 1.6],
+        "fatG": [0.1, 0.4]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "orange",
+      "name": "橙子",
+      "aliases": ["橘子", "柑橘", "橙"],
+      "category": "fruit",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [40, 52],
+        "proteinG": [0.7, 1.1],
+        "fatG": [0.1, 0.3]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "watermelon",
+      "name": "西瓜",
+      "aliases": ["瓜"],
+      "category": "fruit",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [26, 36],
+        "proteinG": [0.4, 0.7],
+        "fatG": [0.05, 0.2]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "milk",
+      "name": "牛奶",
+      "aliases": ["纯牛奶", "鲜牛奶", "全脂牛奶"],
+      "category": "dairy",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [50, 70],
+        "proteinG": [2.8, 3.5],
+        "fatG": [2.5, 4.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "yogurt_plain",
+      "name": "无糖酸奶",
+      "aliases": ["酸奶", "原味酸奶", "希腊酸奶"],
+      "category": "dairy",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [55, 85],
+        "proteinG": [3.0, 4.5],
+        "fatG": [2.5, 4.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "peanuts",
+      "name": "炒花生米",
+      "aliases": ["花生", "花生米", "油炸花生"],
+      "category": "nuts",
+      "defaultPortionG": 30,
+      "per100g": {
+        "caloriesKcal": [540, 610],
+        "proteinG": [22.0, 27.0],
+        "fatG": [42.0, 52.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    {
+      "id": "walnut",
+      "name": "核桃仁",
+      "aliases": ["核桃", "山核桃"],
+      "category": "nuts",
+      "defaultPortionG": 20,
+      "per100g": {
+        "caloriesKcal": [620, 690],
+        "proteinG": [13.0, 17.0],
+        "fatG": [58.0, 68.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "cake",
+      "name": "蛋糕",
+      "aliases": ["奶油蛋糕", "海绵蛋糕", "生日蛋糕"],
+      "category": "pastry",
+      "defaultPortionG": 80,
+      "per100g": {
+        "caloriesKcal": [310, 400],
+        "proteinG": [4.0, 8.0],
+        "fatG": [12.0, 23.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "biscuit",
+      "name": "饼干",
+      "aliases": ["曲奇", "苏打饼干", "夹心饼干"],
+      "category": "pastry",
+      "defaultPortionG": 30,
+      "per100g": {
+        "caloriesKcal": [420, 500],
+        "proteinG": [5.0, 9.0],
+        "fatG": [15.0, 25.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "soy_milk",
+      "name": "无糖豆浆",
+      "aliases": ["豆浆", "原味豆浆"],
+      "category": "beverage",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [25, 45],
+        "proteinG": [2.2, 3.5],
+        "fatG": [1.0, 2.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    {
+      "id": "cola",
+      "name": "可乐",
+      "aliases": ["汽水", "碳酸饮料", "含糖饮料"],
+      "category": "beverage",
+      "defaultPortionG": 330,
+      "per100g": {
+        "caloriesKcal": [38, 46],
+        "proteinG": [0, 0.2],
+        "fatG": [0, 0.1]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    }
+  ],
+  "categoryFallbacks": {
+    "staple": {
+      "label": "同类主食",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [110, 230],
+        "proteinG": [2.0, 7.0],
+        "fatG": [0.3, 6.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "vegetable": {
+      "label": "同类蔬菜",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [35, 130],
+        "proteinG": [0.8, 4.0],
+        "fatG": [1.5, 11.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "meat": {
+      "label": "同类肉类",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [150, 320],
+        "proteinG": [12.0, 27.0],
+        "fatG": [6.0, 27.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "poultry": {
+      "label": "同类禽肉",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [145, 260],
+        "proteinG": [16.0, 28.0],
+        "fatG": [4.0, 18.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "fish": {
+      "label": "同类水产",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [80, 190],
+        "proteinG": [12.0, 23.0],
+        "fatG": [1.0, 12.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "medium"
+    },
+    "egg": {
+      "label": "蛋类",
+      "defaultPortionG": 100,
+      "per100g": {
+        "caloriesKcal": [100, 210],
+        "proteinG": [6.0, 14.0],
+        "fatG": [6.0, 17.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "low"
+    },
+    "soy": {
+      "label": "豆制品",
+      "defaultPortionG": 120,
+      "per100g": {
+        "caloriesKcal": [65, 180],
+        "proteinG": [5.0, 13.0],
+        "fatG": [2.5, 11.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "soup": {
+      "label": "同类汤品",
+      "defaultPortionG": 300,
+      "per100g": {
+        "caloriesKcal": [15, 80],
+        "proteinG": [0.8, 5.0],
+        "fatG": [0.5, 5.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "fruit": {
+      "label": "同类水果",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [30, 100],
+        "proteinG": [0.2, 1.5],
+        "fatG": [0, 0.5]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    "dairy": {
+      "label": "奶类",
+      "defaultPortionG": 200,
+      "per100g": {
+        "caloriesKcal": [45, 100],
+        "proteinG": [2.5, 4.5],
+        "fatG": [1.0, 5.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    "nuts": {
+      "label": "坚果",
+      "defaultPortionG": 25,
+      "per100g": {
+        "caloriesKcal": [500, 690],
+        "proteinG": [12.0, 27.0],
+        "fatG": [40.0, 70.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    "pastry": {
+      "label": "糕点",
+      "defaultPortionG": 60,
+      "per100g": {
+        "caloriesKcal": [300, 500],
+        "proteinG": [4.0, 9.0],
+        "fatG": [10.0, 25.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "beverage": {
+      "label": "饮品",
+      "defaultPortionG": 250,
+      "per100g": {
+        "caloriesKcal": [0, 60],
+        "proteinG": [0, 3.5],
+        "fatG": [0, 2.0]
+      },
+      "oiliness": "low",
+      "saltinessRisk": "low"
+    },
+    "mixed": {
+      "label": "混合菜肴",
+      "defaultPortionG": 180,
+      "per100g": {
+        "caloriesKcal": [90, 250],
+        "proteinG": [4.0, 15.0],
+        "fatG": [5.0, 18.0]
+      },
+      "oiliness": "medium",
+      "saltinessRisk": "medium"
+    },
+    "other": {
+      "label": "相近食物",
+      "defaultPortionG": 150,
+      "per100g": {
+        "caloriesKcal": [70, 250],
+        "proteinG": [2.0, 15.0],
+        "fatG": [2.0, 18.0]
+      },
+      "oiliness": "unknown",
+      "saltinessRisk": "unknown"
+    }
+  }
+}

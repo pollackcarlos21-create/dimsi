@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "今天",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "meal-card": "/components/meal-card/index",
+    "empty-state": "/components/empty-state/index"
+  }
+}

@@ -1,0 +1,217 @@
+<view class="page settings-page">
+  <view class="settings-head">
+    <view class="eyebrow">知食 · 设置</view>
+    <view class="settings-title">把使用方式调成你喜欢的样子</view>
+    <view class="settings-sub">所有个人资料都是可选的，不填写也可以直接拍照分析。</view>
+  </view>
+
+  <view wx:if="{{isDemo}}" class="demo-banner">
+    <view class="demo-banner__dot"></view>
+    <text>本地演示模式：数据只保存在本机，不会调用真实 AI、云数据库或语音服务。</text>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-heading">
+      <view>
+        <view class="card-heading__title">了解我</view>
+        <view class="card-heading__sub">用于更贴合的一般饮食建议</view>
+      </view>
+      <view class="optional-tag">可选</view>
+    </view>
+
+    <view wx:if="{{loading}}" class="profile-loading">
+      <view class="loading-dots">
+        <view class="loading-dots__dot"></view>
+        <view class="loading-dots__dot"></view>
+        <view class="loading-dots__dot"></view>
+      </view>
+      <text>正在读取偏好</text>
+    </view>
+
+    <view wx:elif="{{profileError && !profileLoaded}}" class="profile-error">
+      <text>{{profileError}}</text>
+      <text class="profile-error__retry" bindtap="onRetryProfile">重试</text>
+    </view>
+
+    <block wx:else>
+      <picker
+        mode="selector"
+        range="{{ageOptions}}"
+        value="{{ageIndex}}"
+        bindchange="onAgeChange"
+      >
+        <view class="select-row">
+          <text class="select-row__label">年龄段</text>
+          <view class="select-row__value">{{ageOptions[ageIndex]}}<text class="chevron">›</text></view>
+        </view>
+      </picker>
+
+      <picker
+        mode="selector"
+        range="{{activityOptions}}"
+        value="{{activityIndex}}"
+        bindchange="onActivityChange"
+      >
+        <view class="select-row">
+          <text class="select-row__label">日常活动</text>
+          <view class="select-row__value">{{activityOptions[activityIndex]}}<text class="chevron">›</text></view>
+        </view>
+      </picker>
+
+      <view class="field-group">
+        <view class="field-label">想让饮食更接近什么？</view>
+        <view class="tag-wrap">
+          <button
+            wx:for="{{goals}}"
+            wx:key="label"
+            class="choice-tag {{item.selected ? 'choice-tag--active' : ''}}"
+            data-label="{{item.label}}"
+            bindtap="onToggleGoal"
+          >{{item.label}}</button>
+        </view>
+      </view>
+
+      <view class="field-group">
+        <view class="field-label">口味偏好</view>
+        <view class="tag-wrap">
+          <button
+            wx:for="{{preferences}}"
+            wx:key="label"
+            class="choice-tag {{item.selected ? 'choice-tag--active' : ''}}"
+            data-label="{{item.label}}"
+            bindtap="onTogglePreference"
+          >{{item.label}}</button>
+        </view>
+      </view>
+
+      <view class="field-group">
+        <view class="field-label">食物过敏</view>
+        <input
+          class="allergy-input"
+          value="{{allergies}}"
+          placeholder="例如：花生（没有可以不填）"
+          placeholder-class="placeholder"
+          maxlength="80"
+          bindinput="onAllergiesInput"
+        />
+        <view class="field-hint">请只填写食物过敏信息，不要填写病历、检查结果等敏感医疗资料。</view>
+      </view>
+
+      <view class="switch-row">
+        <view class="switch-row__copy">
+          <view class="switch-row__title">允许参考最近饮食</view>
+          <view class="switch-row__desc">仅使用最近三天的餐次摘要，不使用照片。默认关闭。</view>
+        </view>
+        <switch
+          checked="{{allowHistory}}"
+          color="#547A65"
+          bindchange="onHistoryChange"
+        />
+      </view>
+
+      <button class="save-profile" bindtap="onSaveProfile" disabled="{{saving}}">
+        {{saving ? '正在保存…' : '保存偏好'}}
+      </button>
+    </block>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-heading">
+      <view>
+        <view class="card-heading__title">朗读</view>
+        <view class="card-heading__sub">默认语速，也可以在播放器里随时切换</view>
+      </view>
+    </view>
+    <view class="speed-options">
+      <button
+        wx:for="{{speedOptions}}"
+        wx:key="value"
+        class="speed-option {{item.selected ? 'speed-option--active' : ''}}"
+        data-speed="{{item.value}}"
+        bindtap="onSpeedSelect"
+      >
+        <text class="speed-option__label">{{item.label}}</text>
+        <text class="speed-option__value">{{item.value}}×</text>
+      </button>
+    </view>
+    <view class="card-note">当前语速 {{speechSpeed}}×，调整后下次朗读生效。</view>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-heading">
+      <view>
+        <view class="card-heading__title">数据与隐私</view>
+        <view class="card-heading__sub">照片不会长期保存</view>
+      </view>
+    </view>
+    <view class="privacy-list">
+      <view class="privacy-row">
+        <view class="privacy-row__dot"></view>
+        <text>照片只用于当次分析，默认在分析完成后立即删除原图。</text>
+      </view>
+      <view class="privacy-row">
+        <view class="privacy-row__dot"></view>
+        <text>餐次记录中只保留文字、食物和营养估算，不保存照片。</text>
+      </view>
+      <view class="privacy-row">
+        <view class="privacy-row__dot"></view>
+        <text>你的餐次、聊天和个人偏好按微信身份隔离，其他用户无法读取。</text>
+      </view>
+      <view class="privacy-row">
+        <view class="privacy-row__dot"></view>
+        <text>可以随时清空全部数据；已上传的临时文件会一并尝试删除。</text>
+      </view>
+      <view class="privacy-row">
+        <view class="privacy-row__dot"></view>
+        <text>为防止滥用，清空后会保留不含 openid 的当日用量计数，次日自然失效。</text>
+      </view>
+    </view>
+    <button class="danger-button" bindtap="onDeleteAll" disabled="{{deleting}}">
+      {{deleting ? '正在清空…' : '清空我的全部数据'}}
+    </button>
+  </view>
+
+  <view class="settings-card">
+    <button class="diagnostics-toggle" bindtap="onToggleDiagnostics">
+      <view>
+        <view class="card-heading__title">运行与性能诊断</view>
+        <view class="card-heading__sub">只保存在本机，不含照片和对话内容</view>
+      </view>
+      <text class="diagnostics-toggle__action">{{showDiagnostics ? '收起' : '展开'}}</text>
+    </button>
+    <view wx:if="{{showDiagnostics}}" class="diagnostics-body">
+      <view class="diag-row">
+        <text class="diag-row__label">运行模式</text>
+        <text class="diag-row__value">{{modeLabel}}</text>
+      </view>
+      <view class="diag-row">
+        <text class="diag-row__label">AI 服务</text>
+        <text class="diag-row__value">
+          {{health ? (health.aiMode === 'mock' ? '演示模式' : '已配置') : '未检测'}}
+        </text>
+      </view>
+      <view class="diag-row">
+        <text class="diag-row__label">语音服务</text>
+        <text class="diag-row__value">
+          {{health ? (health.ttsConfigured ? '已配置' : '未配置') : '未检测'}}
+        </text>
+      </view>
+      <view wx:if="{{healthError}}" class="diag-error">{{healthError}}</view>
+      <view class="diag-note">{{latestAnalysisText}}</view>
+      <view class="diag-note">{{latestTtsText}}</view>
+    </view>
+  </view>
+
+  <view class="about-card">
+    <view class="about-card__title">关于知食</view>
+    <view class="about-card__text">
+      知食是一个面向普通家庭的日常饮食助手。我们用照片帮助你看清一餐的大致营养，给出温和、可执行的下一餐建议。
+    </view>
+    <view class="about-card__text">
+      营养数据来自《中国居民膳食指南（2022）》、中国食物成分数据量级参考及 USDA FoodData Central 的交叉核对，为区间化估算，不能替代医疗或注册营养师建议。
+    </view>
+    <view class="about-card__meta">版本 {{version}} · 一般健康与饮食信息，不用于诊断或治疗</view>
+  </view>
+
+  <view class="settings-foot">知食 · 好好吃饭，慢慢变好</view>
+</view>

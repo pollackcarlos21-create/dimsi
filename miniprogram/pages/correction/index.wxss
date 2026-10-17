@@ -1,0 +1,206 @@
+.correction-page {
+  padding-top: 34rpx;
+}
+
+.loading-block,
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 18rpx;
+  color: #837f76;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.error-block__title {
+  color: #3b3833;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.error-block__text {
+  max-width: 520rpx;
+  color: #837f76;
+}
+
+.back-link {
+  min-height: 70rpx;
+  color: #8a867d;
+  font-size: 25rpx;
+  line-height: 70rpx;
+}
+
+.correction-head {
+  padding: 12rpx 4rpx 32rpx;
+}
+
+.correction-head__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.correction-title {
+  margin-top: 10rpx;
+  color: #242424;
+  font-size: 46rpx;
+  font-weight: 600;
+  letter-spacing: -1rpx;
+}
+
+.correction-sub {
+  margin-top: 14rpx;
+  color: #77736a;
+  font-size: 26rpx;
+  line-height: 1.65;
+}
+
+.food-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.food-edit {
+  padding: 24rpx;
+  border: 1rpx solid #e8e4dc;
+  border-radius: 26rpx;
+  background: #fffefc;
+}
+
+.food-edit__head {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+}
+
+.food-edit__index {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 50%;
+  background: #eef3ef;
+  color: #547a65;
+  font-size: 19rpx;
+  font-weight: 600;
+}
+
+.food-name {
+  flex: 1;
+  min-width: 0;
+  height: 66rpx;
+  color: #34312c;
+  font-size: 29rpx;
+  font-weight: 500;
+}
+
+.remove-food {
+  flex: 0 0 auto;
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+  color: #a89587;
+  font-size: 34rpx;
+  line-height: 66rpx;
+  text-align: center;
+}
+
+.portion-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-top: 16rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid #f0ece5;
+}
+
+.portion-label {
+  margin-right: auto;
+  color: #837f76;
+  font-size: 23rpx;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+  border: 1rpx solid #e2ded6;
+  border-radius: 50%;
+  background: #faf9f5;
+  color: #5c5851;
+  font-size: 30rpx;
+  line-height: 72rpx;
+}
+
+.portion-input-wrap {
+  display: flex;
+  align-items: center;
+  height: 64rpx;
+  padding: 0 16rpx;
+  border: 1rpx solid #e2ded6;
+  border-radius: 16rpx;
+  background: #fffefc;
+}
+
+.portion-input {
+  width: 86rpx;
+  height: 64rpx;
+  color: #34312c;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+.portion-unit {
+  color: #9a958c;
+  font-size: 22rpx;
+}
+
+.add-food {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  width: 100%;
+  min-height: 92rpx;
+  margin-top: 18rpx;
+  border: 2rpx dashed #dcd7ce;
+  border-radius: 24rpx;
+  background: transparent;
+  color: #5e7b69;
+  font-size: 25rpx;
+}
+
+.add-food__plus {
+  font-size: 30rpx;
+}
+
+.save-note {
+  margin: 24rpx 4rpx 0;
+  color: #9a958c;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.correction-actions {
+  margin-top: 30rpx;
+}
+
+.cancel-link {
+  width: 100%;
+  min-height: 80rpx;
+  margin-top: 8rpx;
+  color: #837f76;
+  font-size: 25rpx;
+  line-height: 80rpx;
+  text-align: center;
+}

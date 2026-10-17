@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "调整食物",
+  "usingComponents": {
+    "demo-badge": "/components/demo-badge/index"
+  }
+}

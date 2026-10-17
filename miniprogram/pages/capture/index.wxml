@@ -1,0 +1,116 @@
+<view class="page capture-page">
+  <view class="capture-head">
+    <view class="eyebrow">看看这顿饭</view>
+    <view class="capture-title">
+      {{state === 'ready' ? '照片清楚吗？' : '把饭菜放进画面'}}
+    </view>
+    <view class="capture-sub">
+      {{state === 'ready' ? '确认后，我们会先认菜，再估算这顿饭的大致营养。' : '尽量把整盘菜拍进来，光线充足会更准确。'}}
+    </view>
+  </view>
+
+  <view wx:if="{{state === 'loading'}}" class="photo-state photo-state--loading">
+    <view class="loading-dots">
+      <view class="loading-dots__dot"></view>
+      <view class="loading-dots__dot"></view>
+      <view class="loading-dots__dot"></view>
+    </view>
+    <text class="photo-state__title">正在准备照片……</text>
+    <text class="photo-state__desc">可以稍等一会儿</text>
+  </view>
+
+  <view wx:elif="{{state === 'ready' && imagePath}}" class="photo-wrap">
+    <image
+      class="photo"
+      src="{{imagePath}}"
+      mode="aspectFill"
+      bindtap="onPreview"
+      aria-label="预览已选择照片"
+    />
+    <view class="photo-meta">
+      <text>{{image.width}} × {{image.height}}</text>
+      <text>·</text>
+      <text>{{sizeLabel}}</text>
+      <text wx:if="{{image.compressed}}" class="photo-meta__tag">已轻度压缩</text>
+    </view>
+  </view>
+
+  <view wx:elif="{{state === 'error'}}" class="photo-state photo-state--error">
+    <view class="photo-state__mark">!</view>
+    <text class="photo-state__title">{{error}}</text>
+    <text wx:if="{{hint}}" class="photo-state__desc">{{hint}}</text>
+    <view class="error-actions">
+      <button class="btn btn-secondary btn-small" bindtap="onRetry">再选一次</button>
+      <button wx:if="{{errorIsPrivacy}}" class="btn btn-ghost btn-small" bindtap="onOpenPrivacyContract">查看隐私指引</button>
+      <button wx:if="{{showPermissionSettings}}" class="btn btn-ghost btn-small" bindtap="onPermissionHelp">打开权限设置</button>
+    </view>
+  </view>
+
+  <view wx:else class="photo-state">
+    <view class="frame-icon">
+      <view class="frame-icon__corner frame-icon__corner--tl"></view>
+      <view class="frame-icon__corner frame-icon__corner--tr"></view>
+      <view class="frame-icon__corner frame-icon__corner--bl"></view>
+      <view class="frame-icon__corner frame-icon__corner--br"></view>
+      <view class="frame-icon__dot"></view>
+    </view>
+    <text class="photo-state__title">还没有照片</text>
+    <text class="photo-state__desc">{{hint || '可以拍一张，也可以从相册里选择。'}}</text>
+    <view class="error-actions">
+      <button class="btn btn-primary btn-small" bindtap="onTakePhoto">打开相机</button>
+      <button class="btn btn-secondary btn-small" bindtap="onChooseAlbum">从相册选择</button>
+    </view>
+  </view>
+
+  <view wx:if="{{state === 'ready'}}" class="actions">
+    <button
+      class="btn btn-primary analyze-btn"
+      bindtap="onAnalyze"
+      hover-class="btn-pressed"
+      disabled="{{submitting}}"
+    >
+      {{submitting ? '正在打开…' : '看看这顿饭'}}
+    </button>
+    <button class="retake" bindtap="onRetakeChoice">重新选择</button>
+  </view>
+
+  <view class="tips">
+    <view class="tip">
+      <view class="tip__index">1</view>
+      <text>把餐盘放平，食物尽量都在画面里</text>
+    </view>
+    <view class="tip">
+      <view class="tip__index">2</view>
+      <text>光线明亮时，识别会更稳一些</text>
+    </view>
+    <view class="tip">
+      <view class="tip__index">3</view>
+      <text>混合菜会按一道菜来估算，不用分开拍</text>
+    </view>
+  </view>
+
+  <view class="capture-privacy">
+    <view class="capture-privacy__lock"></view>
+    <text>分析完成后会删除原图，不把照片留在餐次记录里。</text>
+  </view>
+
+  <view wx:if="{{privacyNeeded}}" class="privacy-mask" catchtouchmove="noop">
+    <view class="privacy-sheet">
+      <view class="privacy-sheet__eyebrow">使用照片前</view>
+      <view class="privacy-sheet__title">先了解一下隐私说明</view>
+      <view class="privacy-sheet__text">
+        知食需要使用相机或相册来获取你要分析的食物照片。照片只用于当次营养分析，分析完成后会删除原图，不会保存到餐次记录中。
+      </view>
+      <button class="privacy-sheet__link" bindtap="onOpenPrivacyContract">
+        查看《{{privacyContractName || '小程序隐私保护指引'}}》
+      </button>
+      <button
+        id="agree-privacy-btn"
+        class="btn btn-primary privacy-sheet__agree"
+        open-type="agreePrivacyAuthorization"
+        bindagreeprivacyauthorization="onPrivacyAgree"
+      >同意并继续</button>
+      <button class="privacy-sheet__decline" bindtap="onPrivacyDecline">暂不使用</button>
+    </view>
+  </view>
+</view>

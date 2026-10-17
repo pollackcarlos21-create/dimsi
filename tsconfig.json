@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": ["ES2020", "DOM"],
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["miniprogram-api-typings"],
+    "noEmit": true
+  },
+  "include": ["miniprogram/**/*.ts", "miniprogram/**/*.d.ts"],
+  "exclude": ["node_modules", "cloudfunctions", "tests", "scripts"]
+}

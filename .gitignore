@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+coverage/
+*.log
+project.private.config.json
+cloudfunctions/api/index.js
+cloudfunctions/api/node_modules/
+miniprogram/miniprogram_npm/

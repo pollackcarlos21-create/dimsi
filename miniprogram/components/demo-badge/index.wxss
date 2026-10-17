@@ -1,0 +1,19 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42rpx;
+  padding: 0 16rpx;
+  border-radius: 999rpx;
+  background: #e7eee9;
+  color: #436450;
+  font-size: 21rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  white-space: nowrap;
+}
+
+.badge--demo {
+  background: #f7ecdf;
+  color: #8b5c32;
+  border: 1rpx dashed rgba(139, 92, 50, 0.3);
+}
