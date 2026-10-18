@@ -4,6 +4,14 @@
 
 产品面向普通中国家庭，尤其是中老年成员和营养知识有限的用户。它不提供医疗诊断，不承诺减重或治病，也不会把照片估算包装成精确测量。
 
+## 界面预览
+
+<p align="center">
+  <img src="docs/images/home.jpg" width="300" alt="home">
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/images/assistant.png" width="300" alt="assistant">
+</p>
+
 ## 当前状态
 
 - M001–M004 的代码已实现，面向微信开发者工具的本地演示模式已交付；但本机未安装开发者工具，因此“可编译运行”尚未实际验证。
